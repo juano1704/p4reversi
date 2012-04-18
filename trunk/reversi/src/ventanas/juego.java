@@ -10,12 +10,14 @@ import javax.swing.*;
  *
  * @author Borja
  */
-public class juego extends javax.swing.JFrame {
+public class juego extends javax.swing.JFrame 
+{
 
     /**
      * Creates new form juego
      */
-    public juego() {
+    public juego() 
+    {
         initComponents();
     }
 
@@ -26,7 +28,8 @@ public class juego extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private void initComponents() 
+    {
 
         jLabel1 = new JLabel();
         jLabel2 = new JLabel();
@@ -109,7 +112,8 @@ public class juego extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
         /*
          * Set the Nimbus look and feel
          */
@@ -119,7 +123,8 @@ public class juego extends javax.swing.JFrame {
          * default look and feel. For details see
          * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        try {
+        try 
+        {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) 
             {
                 if ("Nimbus".equals(info.getName())) 
