@@ -1,18 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.util.logging.*;
-
 import javax.swing.*;
 
 /**
  *
- * @author Borja
+ * @author 
  */
 public class menuPrincipal extends JFrame implements ActionListener{
 
@@ -28,6 +24,7 @@ public class menuPrincipal extends JFrame implements ActionListener{
     	ImageIcon imagenes=new ImageIcon();
     	
     public menuPrincipal() {
+    	this.setResizable(false);
     	setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton2.setText("Instrucciones");
