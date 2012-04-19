@@ -26,7 +26,7 @@ public class instrucciones extends JFrame implements ActionListener {
 		
 		jTextArea1.setColumns(20);
 		jTextArea1.setFont(new Font("Monospaced", 0, 12)); // NOI18N
-		jTextArea1.setRows(5);
+		jTextArea1.setRows(1);
 		jTextArea1.setEditable(false);
 		jTextArea1
 				.setText("   El Reversi es un juego de tablero en el\n "
