@@ -13,8 +13,7 @@ import javax.swing.JButton;
  *
  * @author Borja
  */
-public class juego extends JFrame implements ActionListener
-{
+public class juego extends JFrame implements ActionListener {
 
     /**
      * Creates new form juego
