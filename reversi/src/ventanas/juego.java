@@ -6,11 +6,13 @@ package ventanas;
 
 import javax.swing.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author Borja
  */
-public class juego extends javax.swing.JFrame 
+public class juego extends JFrame implements ActionListener
 {
 
     /**
@@ -93,11 +95,23 @@ public class juego extends javax.swing.JFrame
                         .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-
+        
+        jButton1.addActionListener(this);
+        
         pack();
     }// </editor-fold>
     
-    
+    public void actionPerformed(ActionEvent e){
+		JButton pulsado = (JButton)e.getSource();
+		if(pulsado==jButton1) 
+		/*    solo hay un boton asique entra fijo.
+		 *    si el boton pulsado es el de 'opciones' entra aqui, de no ser, no entraria. 
+		 */			
+		{
+			new opciones().setVisible(true);
+			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+		}
+	}
 
     /**
      * @param args the command line arguments
