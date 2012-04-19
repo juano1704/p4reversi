@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 /**
  *
  * @author Borja
@@ -94,6 +95,7 @@ public class juego extends JFrame implements ActionListener
                         .addGap(42, 42, 42)
                         .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
+                
         );
         
         jButton1.addActionListener(this);
