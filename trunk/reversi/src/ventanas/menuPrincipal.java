@@ -87,7 +87,7 @@ public class menuPrincipal extends JFrame implements ActionListener{
         );
         
         jButton2.addActionListener(this);
-        
+        jButton3.addActionListener(this);
 
         pack();
     }
@@ -100,7 +100,12 @@ public class menuPrincipal extends JFrame implements ActionListener{
     		new instrucciones().setVisible(true);
     		this.dispose();
     	}
+    	else if(pulsado == jButton3){
+    		new puntuaciones().setVisible(true);
+    		this.dispose();
+    	}
     }
+    
     private void jLabel1MouseReleased(MouseEvent evt) {
         // TODO add your handling code here:
     }
