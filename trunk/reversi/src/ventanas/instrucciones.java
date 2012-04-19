@@ -21,10 +21,8 @@ public class instrucciones extends JFrame implements ActionListener {
 		JButton jButton1 = new JButton();
 		
 	public instrucciones() {
-		
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		
 		jTextArea1.setColumns(20);
 		jTextArea1.setFont(new Font("Monospaced", 0, 12)); // NOI18N
@@ -45,6 +43,7 @@ public class instrucciones extends JFrame implements ActionListener {
 						+ "entre dos piezas del jugador (en línea\n "
 						+ "horizontal, vertical o diagonal) son\n "
 						+ "convertidas al color del jugador.");
+		
 		jScrollPane1.setViewportView(jTextArea1);
 
 		jLabel1.setFont(new Font("Tahoma", 1, 14)); // NOI18N
