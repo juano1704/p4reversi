@@ -80,22 +80,12 @@ public class opciones extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
         
-        jButton3.addActionListener(this);
+
         
         pack();
     }// </editor-fold>
 
-    public void actionPerformed(ActionEvent e){
-		JButton pulsado = (JButton)e.getSource();
-		if(pulsado==jButton3) 
-		/*    solo hay un boton asique entra fijo.
-		 *    si el boton pulsado es el de 'opciones' entra aqui, de no ser, no entraria. 
-		 */			
-		{
-			new juego().setVisible(true);
-			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
-		}
-	}
+
     
     /**
      * @param args the command line arguments
