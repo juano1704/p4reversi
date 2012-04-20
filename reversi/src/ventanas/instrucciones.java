@@ -1,4 +1,5 @@
 package ventanas;
+
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,24 +7,16 @@ import java.util.logging.*;
 
 import javax.swing.*;
 
-/**
- * 
- * @author Borja
- */
 public class instrucciones extends JFrame implements ActionListener {
+	JScrollPane jScrollPane1 = new JScrollPane();
+	JTextArea jTextArea1 = new JTextArea();
+	JLabel jLabel1 = new JLabel();
+	JButton jButton1 = new JButton();
 
-	/**
-	 * Creates new form instrucciones
-	 */
-		JScrollPane jScrollPane1 = new JScrollPane();
-		JTextArea jTextArea1 = new JTextArea();
-		JLabel jLabel1 = new JLabel();
-		JButton jButton1 = new JButton();
-		
 	public instrucciones() {
-
+		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
+
 		jTextArea1.setColumns(20);
 		jTextArea1.setFont(new Font("Monospaced", 0, 12)); // NOI18N
 		jTextArea1.setRows(1);
@@ -43,7 +36,7 @@ public class instrucciones extends JFrame implements ActionListener {
 						+ "entre dos piezas del jugador (en línea\n "
 						+ "horizontal, vertical o diagonal) son\n "
 						+ "convertidas al color del jugador.");
-		
+
 		jScrollPane1.setViewportView(jTextArea1);
 
 		jLabel1.setFont(new Font("Tahoma", 1, 14)); // NOI18N
@@ -105,30 +98,20 @@ public class instrucciones extends JFrame implements ActionListener {
 										javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 								.addComponent(jButton1).addContainerGap()));
 
-		jButton1.addActionListener(this); //con esto se consigue que el programa escuche si pasa algo en ese boton
-				
+		jButton1.addActionListener(this);
+
 		pack();
 	}
 
-	
-	public void actionPerformed(ActionEvent e){
-		JButton pulsado = (JButton)e.getSource();
-		if(pulsado==jButton1) 
-		/*    solo hay un boton asique entra fijo.
-		 *    si el boton pulsado es el de 'volver' entra aqui, de no ser, no entraria. 
-		 */			
-		{
+	public void actionPerformed(ActionEvent e) {
+		JButton pulsado = (JButton) e.getSource();
+		if (pulsado == jButton1) {
 			new menuPrincipal().setVisible(true);
-			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+			this.dispose();
 		}
 	}
-	
-	/**
-	 * @param args
-	 *            the command line arguments
-	 */
+
 	public static void main(String args[]) {
-		
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -150,7 +133,7 @@ public class instrucciones extends JFrame implements ActionListener {
 			Logger.getLogger(instrucciones.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-		
+
 		EventQueue.invokeLater(new Runnable() {
 
 			public void run() {
