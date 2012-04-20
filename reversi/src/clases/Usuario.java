@@ -1,7 +1,7 @@
 package clases;
 
 public class Usuario {
-	private String nombre;
+	private  String nombre;
 	private String contraseña;
 	private int partidasJugadas;
 	private int partidasGanadas;
@@ -57,8 +57,24 @@ public class Usuario {
 	}
 	
 	public static void main(String[] args) {
-		
-Usuario u=new Usuario();
+	String nombre;
+	String contraseña;
+do
+{
+System.out.println("Introduce el nombre de usuario:");
+  nombre=Utilidades.leerCadena();
+}
+while(nombre.length()>15);
+
+do
+{
+System.out.println("Introduce la contraseña:");
+ contraseña=Utilidades.leerCadena();
+}
+while(contraseña.length()>10);
+
+ Usuario u=new Usuario();
+	
 u.mostrar();
 	}
 

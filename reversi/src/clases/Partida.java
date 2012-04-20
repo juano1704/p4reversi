@@ -26,6 +26,8 @@ public class Partida {
 	}
 	public static void main(String []args)
 	{
+		System.out.println("Introduce el nombre de la partida:");
+		String nombre=Utilidades.leerCadena();
 		Partida p=new Partida();
 		p.mostrar();
 	}
