@@ -3,7 +3,10 @@
  * and open the template in the editor.
  */
 package ventanas;
-
+import java.awt.EventQueue;
+import java.awt.event.*;
+import java.util.logging.*;
+import javax.swing.*;
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
@@ -110,7 +113,6 @@ public class juego extends JFrame implements ActionListener {
 		 */			
 		{
 			new opciones().setVisible(true);
-			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
 		}
 	}
 

@@ -4,11 +4,16 @@
  */
 package ventanas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Borja
  */
-public class registro1 extends javax.swing.JFrame {
+public class registro1 extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form registro1
@@ -90,10 +95,35 @@ public class registro1 extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
-
+        
+        jButton2.addActionListener(this);
+        
+        jButton1.addActionListener(this);
+        
         pack();
     }// </editor-fold>
-
+  
+    
+    public void actionPerformed(ActionEvent e){
+		JButton pulsado = (JButton)e.getSource();
+		if(pulsado==jButton2) 
+		/*    solo hay un boton asique entra fijo.
+		 *    si el boton pulsado es el de 'OK' entra aqui, de no ser, no entraria. 
+		 */			
+		{
+			new registro2().setVisible(true);
+			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+		}
+		else if(pulsado==jButton1) 
+		/*    solo hay un boton asique entra fijo.
+		 *    si el boton pulsado es el de 'Registrarse' entra aqui, de no ser, no entraria. 
+		 */			
+		{
+			new registroNuevo1().setVisible(true);
+			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+		}
+	}
+    
     /**
      * @param args the command line arguments
      */
