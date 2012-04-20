@@ -2,18 +2,18 @@ package clases;
 
 public class Usuario {
 	private String nombre;
-	private String contraseña;
+	private char contraseña;
 	private int partidasJugadas;
 	private int partidasGanadas;
 
 	public Usuario() {
 		nombre = "";
-		contraseña = "";
+		contraseña = '0';
 		partidasJugadas = 0;
 		partidasGanadas = 0;
 	}
 
-	public Usuario(String n, String c, int pJ, int pG) {
+	public Usuario(String n, char c, int pJ, int pG) {
 		nombre = n;
 		contraseña = c;
 		partidasJugadas = pJ;
@@ -28,11 +28,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getContraseña() {
+	public char getContraseña() {
 		return contraseña;
 	}
 
-	public void setContraseña(String contraseña) {
+	public void setContraseña(char contraseña) {
 		this.contraseña = contraseña;
 	}
 
