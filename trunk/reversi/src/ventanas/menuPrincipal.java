@@ -18,9 +18,10 @@ public class menuPrincipal extends JFrame implements ActionListener{
 		JButton jButton2 = new JButton();
     	JButton jButton3 = new JButton();
     	JButton jButton4 = new JButton();
+    	JButton jButton1 = new JButton();
     	JLabel jLabel1 = new JLabel();
     	JLabel jLabel2 = new JLabel();
-    	JButton jButton1 = new JButton();
+    	
     	ImageIcon imagenes=new ImageIcon();
     	
     public menuPrincipal() {
