@@ -122,10 +122,6 @@ public class instrucciones extends JFrame implements ActionListener {
 			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
 		}
 	}
-
-	
-	
-	
 	
 	/**
 	 * @param args
