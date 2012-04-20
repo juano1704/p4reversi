@@ -3,17 +3,15 @@
  * and open the template in the editor.
  */
 package ventanas;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
+import java.awt.EventQueue;
+import java.awt.event.*;
+import java.util.logging.*;
+import javax.swing.*;
 /**
  *
  * @author Borja
  */
-public class opciones extends JFrame implements ActionListener{
+public class opciones extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form opciones
@@ -34,6 +32,8 @@ public class opciones extends JFrame implements ActionListener{
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,22 +43,31 @@ public class opciones extends JFrame implements ActionListener{
         jButton1.setText("Reiniciar");
 
         jButton2.setText("Cancelar");
-        
+
+        jButton3.setText("Menú principal");
+
+        jButton4.setText("Guardar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 96, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,27 +75,63 @@ public class opciones extends JFrame implements ActionListener{
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        jButton1.addActionListener(this);
         
         jButton2.addActionListener(this);
         
+        jButton3.addActionListener(this);
+        
+        jButton4.addActionListener(this);
+        
         pack();
     }// </editor-fold>
-
+  
     public void actionPerformed(ActionEvent e){
 		JButton pulsado = (JButton)e.getSource();
-		if(pulsado==jButton2) 
+		if(pulsado==jButton1) 
 		/*    solo hay un boton asique entra fijo.
-		 *    si el boton pulsado es el de 'opciones' entra aqui, de no ser, no entraria. 
+		 *    si el boton pulsado es el de 'Reiniciar' entra aqui, de no ser, no entraria. 
 		 */			
 		{
 			new juego().setVisible(true);
 			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
 		}
+		if(pulsado==jButton2) 
+		/*    solo hay un boton asique entra fijo.
+		 *    si el boton pulsado es el de 'Cancelar' entra aqui, de no ser, no entraria. 
+		 */			
+		{
+			new juego().setVisible(true);
+			this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+		}
+		if(pulsado==jButton3) 
+			/*    solo hay un boton asique entra fijo.
+			 *    si el boton pulsado es el de 'Menú principal' entra aqui, de no ser, no entraria. 
+			 */			
+			{
+				new menuPrincipal().setVisible(true);
+				this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+			}
+		if(pulsado==jButton4) 
+		/*    solo hay un boton asique entra fijo.
+		 *    si el boton pulsado es el de 'Guardar' entra aqui, de no ser, no entraria. 	
+		 **/			
+			{
+				new menuPrincipal().setVisible(true);
+				this.dispose();//cierras la ventana en la que estas, en este caso instrucciones
+			}
 	}
     
     /**
@@ -133,6 +178,8 @@ public class opciones extends JFrame implements ActionListener{
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration
 }
