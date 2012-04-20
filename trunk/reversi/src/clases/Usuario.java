@@ -65,17 +65,18 @@ public class Usuario {
 
 		System.out.println("Introduce el nombre de usuario:");
 		nombre = Utilidades.leerCadena();
-		while (nombre.length() > 15)
-		{
-			System.out.println("Vuelva a introducirlo, debe tener como maximo 15 caracteres:");
-			nombre = Utilidades.leerCadena();}
+		while (nombre.length() > 15) {
+			System.out
+					.println("Vuelva a introducirlo, debe tener como maximo 15 caracteres:");
+			nombre = Utilidades.leerCadena();
+		}
 
 		System.out.println("Introduce la contraseña:");
 		contraseña = Utilidades.leerCadena();
-		while (contraseña.length()!=5)
-		{	
+		while (contraseña.length() != 5) {
 			System.out.println("Error, vuelva a introducirla:");
-			contraseña = Utilidades.leerCadena();}
+			contraseña = Utilidades.leerCadena();
+		}
 
 		Usuario u = new Usuario();
 
