@@ -87,6 +87,7 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		jButton2.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {

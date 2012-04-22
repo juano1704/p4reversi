@@ -101,6 +101,7 @@ public class instrucciones extends JFrame implements ActionListener {
 		jButton1.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {

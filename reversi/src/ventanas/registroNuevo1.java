@@ -158,6 +158,7 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		jButton2.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {

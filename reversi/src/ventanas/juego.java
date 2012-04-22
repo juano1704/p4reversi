@@ -8,7 +8,7 @@ import java.awt.EventQueue;
 import java.awt.event.*;
 import java.util.logging.*;
 import javax.swing.*;
-import javax.swing.*;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +42,7 @@ public class juego extends JFrame implements ActionListener {
 		jLabel6.setText("NUM");
 		jLabel7.setText("NUM");
 
+		this.setTitle("Reversi");
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -141,15 +142,47 @@ public class juego extends JFrame implements ActionListener {
 		jButton1.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == jButton1) {
-			new opciones().setVisible(true);
-		}
+		if (pulsado == jButton1) 
+			opciones();
 	}
 
+	public void opciones(){
+		int messageType = JOptionPane.QUESTION_MESSAGE;
+	      String[] options = {"Reiniciar", "Guardar", "Menú Principal", "Cancelar"};
+	      int code = JOptionPane.showOptionDialog(null, 
+	         "                              OPCIONES", 
+	         "Opciones", 0, messageType, 
+	         null, options, "Cancelar");
+	      if(code==0)//Reiniciar
+	      {
+	    	  this.dispose();
+	    	  new juego().setVisible(true);
+	      }
+	      if(code==1)
+	      {
+	    	  //guardar
+	      }
+	      if(code==3)//Cancelar
+	      {
+	    	  
+	      }
+	      if(code==2)//Menu Principal
+	      {
+	    	  int codigo=JOptionPane.showConfirmDialog(null, "¿Seguro que quiere salir?");
+	    	  if(codigo==0){
+	    	  this.dispose();
+	    	  new menuPrincipal().setVisible(true);
+	    	  }
+	    	  if(codigo==1||codigo==2){
+	    		  opciones();
+	    	  }
+	}
+	}
 	public static void main(String args[]) {
 
 		try {
