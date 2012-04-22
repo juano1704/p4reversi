@@ -145,6 +145,7 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 		jButton2.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {

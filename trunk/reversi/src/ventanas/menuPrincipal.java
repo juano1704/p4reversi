@@ -141,6 +141,7 @@ public class menuPrincipal extends JFrame implements ActionListener {
 		jButton4.addActionListener(this);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {
