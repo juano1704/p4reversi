@@ -33,114 +33,53 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(143,
-																		143,
-																		143)
-																.addComponent(
-																		jLabel1))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addContainerGap()
-																.addComponent(
-																		jLabel3,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		195,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGroup(
-																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING)
-																				.addGroup(
-																						layout.createSequentialGroup()
-																								.addGap(28,
-																										28,
-																										28)
-																								.addGroup(
-																										layout.createParallelGroup(
-																												javax.swing.GroupLayout.Alignment.LEADING)
-																												.addComponent(
-																														jLabel2)
-																												.addComponent(
-																														jTextField1,
-																														javax.swing.GroupLayout.PREFERRED_SIZE,
-																														147,
-																														javax.swing.GroupLayout.PREFERRED_SIZE)))
-																				.addGroup(
-																						javax.swing.GroupLayout.Alignment.TRAILING,
-																						layout.createSequentialGroup()
-																								.addPreferredGap(
-																										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																								.addGroup(
-																										layout.createParallelGroup(
-																												javax.swing.GroupLayout.Alignment.LEADING)
-																												.addGroup(
-																														javax.swing.GroupLayout.Alignment.TRAILING,
-																														layout.createSequentialGroup()
-																																.addComponent(
-																																		jButton1)
-																																.addGap(50,
-																																		50,
-																																		50))
-																												.addGroup(
-																														javax.swing.GroupLayout.Alignment.TRAILING,
-																														layout.createSequentialGroup()
-																																.addComponent(
-																																		jButton2)
-																																.addGap(21,
-																																		21,
-																																		21)))))))
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGap(23, 23, 23)
-								.addComponent(jLabel1)
-								.addGap(18, 18, 18)
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-												.addComponent(
-														jLabel3,
-														javax.swing.GroupLayout.PREFERRED_SIZE,
-														220,
-														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addComponent(
-																		jLabel2)
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		jTextField1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		jButton1,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		40,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		jButton2)))
-								.addContainerGap(76, Short.MAX_VALUE)));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(50, 50, 50))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addGap(21, 21, 21)))))))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
 		jButton1.addActionListener(this);
 		jButton2.addActionListener(this);
