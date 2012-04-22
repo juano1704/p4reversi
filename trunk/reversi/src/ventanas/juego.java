@@ -15,10 +15,16 @@ public class juego extends JFrame implements ActionListener {
 	public juego() {
 		initComponents();
 	}
+	
+	ImageIcon blanca = new ImageIcon();
+	ImageIcon negra = new ImageIcon();
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
+		blanca = new ImageIcon("src\\imagenes\\blanca.jpg");
+		negra = new ImageIcon("src\\imagenes\\negra.jpg");
+		
 		jButton1 = new JButton();
 
 		jLabel1 = new JLabel(); // imagen del tablero en juego
@@ -33,8 +39,8 @@ public class juego extends JFrame implements ActionListener {
 
 		jLabel2.setText("Jugador 1:");
 		jLabel3.setText("Jugador 2:");
-		jLabel4.setText("circulo B");
-		jLabel5.setText("circulo N");
+		jLabel4.setIcon(blanca);
+		jLabel5.setIcon(negra);
 		jLabel6.setText("NUM");
 		jLabel7.setText("NUM");
 
