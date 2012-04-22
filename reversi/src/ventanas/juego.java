@@ -48,98 +48,52 @@ public class juego extends JFrame implements ActionListener {
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(jLabel1,
-										GroupLayout.PREFERRED_SIZE, 313,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(32, 32, 32)
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addComponent(jButton1)
-												.addGroup(
-														layout.createParallelGroup(
-																GroupLayout.Alignment.LEADING,
-																false)
-																.addComponent(
-																		jLabel3)
-																.addComponent(
-																		jLabel2,
-																		GroupLayout.Alignment.TRAILING))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addComponent(
-																		jLabel4)
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		jLabel6))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addComponent(
-																		jLabel5)
-																.addPreferredGap(
-																		LayoutStyle.ComponentPlacement.UNRELATED)
-																.addComponent(
-																		jLabel7)))
-								.addGap(0, 43, Short.MAX_VALUE)));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(54, 54,
-																		54)
-																.addComponent(
-																		jLabel2)
-																.addGap(18, 18,
-																		18)
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.BASELINE)
-																				.addComponent(
-																						jLabel4)
-																				.addComponent(
-																						jLabel6))
-																.addGap(24, 24,
-																		24)
-																.addComponent(
-																		jLabel3)
-																.addGap(18, 18,
-																		18)
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.BASELINE)
-																				.addComponent(
-																						jLabel5)
-																				.addComponent(
-																						jLabel7))
-																.addGap(68, 68,
-																		68)
-																.addComponent(
-																		jButton1))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(42, 42,
-																		42)
-																.addComponent(
-																		jLabel1,
-																		GroupLayout.PREFERRED_SIZE,
-																		286,
-																		GroupLayout.PREFERRED_SIZE)))
-								.addContainerGap(21, Short.MAX_VALUE))
-
-		);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)))
+                .addGap(21, 21, 21))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addGap(62, 62, 62)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
+        );
 
 		jButton1.addActionListener(this);
 
