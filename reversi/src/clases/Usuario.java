@@ -1,19 +1,21 @@
 package clases;
 
+import java.util.LinkedList;
+
 public class Usuario {
 	private String nombre;
-	private char contraseña;
+	private String contraseña;
 	private int partidasJugadas;
 	private int partidasGanadas;
 
 	public Usuario() {
 		nombre = "";
-		contraseña = '0';
+		contraseña = "";
 		partidasJugadas = 0;
 		partidasGanadas = 0;
 	}
 
-	public Usuario(String n, char c, int pJ, int pG) {
+	public Usuario(String n, String c, int pJ, int pG) {
 		nombre = n;
 		contraseña = c;
 		partidasJugadas = pJ;
@@ -28,11 +30,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public char getContraseña() {
+	public String getContraseña() {
 		return contraseña;
 	}
 
-	public void setContraseña(char contraseña) {
+	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
 
@@ -59,34 +61,56 @@ public class Usuario {
 		System.out.println("Número de partidas ganadas:" + partidasGanadas);
 	}
 	
-	public static boolean buscarUsuario (Usuario x, Lista lUsuarios){
-		boolean enc;
-		
-		
-		
+	public static String introducirNombre(){
+		System.out.println("Introduce el nombre de usuario:");
+		String nombre = Utilidades.leerCadena();
+		while (nombre.length() > 15) {
+			System.out.println("Vuelva a introducirlo, debe tener como maximo 15 caracteres:");
+			nombre = Utilidades.leerCadena();
+		}
+		return nombre;
+	}
+	
+	public static boolean buscarUsuario (String n1, LinkedList<Usuario> lU){
+		boolean enc=false;
+		int i=1;
+		while ((lU.size()<=i)||(enc!=true)){
+			Usuario u1 = new Usuario();
+			u1=lU.get(i);
+			if (u1.getNombre().equals(n1)){
+				enc = true;
+			}
+			else
+				i++;
+		}
+		return enc;	
 	}
 	
 	public static void main(String[] args) {
 		String nombre;
 		String contraseña;
+		boolean enc=false;
+		Usuario u = new Usuario();
+		LinkedList<Usuario> lU = new LinkedList<Usuario>();
 
-		System.out.println("Introduce el nombre de usuario:");
-		nombre = Utilidades.leerCadena();
-		while (nombre.length() > 15) {
-			System.out
-					.println("Vuelva a introducirlo, debe tener como maximo 15 caracteres:");
-			nombre = Utilidades.leerCadena();
+		nombre = introducirNombre();
+		boolean enc2 = buscarUsuario(nombre, lU);
+		while (enc==false){
+			nombre=introducirNombre();
+			enc2 = buscarUsuario(nombre, lU);
+			if (enc2==true){
+				enc = true;
+			}
 		}
-
+		u.setNombre(nombre);
 		System.out.println("Introduce la contraseña:");
 		contraseña = Utilidades.leerCadena();
-		while (contraseña.length() != 5) {
+		while (contraseña.length() != 8) {
 			System.out.println("Error, vuelva a introducirla:");
 			contraseña = Utilidades.leerCadena();
 		}
-
-		Usuario u = new Usuario();
-
+		u.setContraseña(contraseña);
+		lU.add(lU.size(),u);
 		u.mostrar();
 	}
 
