@@ -7,10 +7,10 @@ import javax.swing.*;
 
 public class menuPrincipal extends JFrame implements ActionListener {
 
-	JButton jugar = new JButton();
-	JButton instrucciones = new JButton();
-	JButton top5 = new JButton();
-	JButton salir = new JButton();
+	JButton botonjugar = new JButton();
+	JButton botoninst = new JButton();
+	JButton botontop = new JButton();
+	JButton botonsalir = new JButton();
 
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
@@ -19,10 +19,10 @@ public class menuPrincipal extends JFrame implements ActionListener {
 
 	public menuPrincipal() {
 
-		jugar.setText("JUGAR");
-		instrucciones.setText("Instrucciones");
-		top5.setText("TOP 5");
-		salir.setText("SALIR");
+		botonjugar.setText("JUGAR");
+		botoninst.setText("Instrucciones");
+		botontop.setText("TOP 5");
+		botonsalir.setText("SALIR");
 
 		imagenes = new ImageIcon("src\\imagenes\\reversiMenuPrincipal.jpg");
 
@@ -45,12 +45,12 @@ public class menuPrincipal extends JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(instrucciones)
-                            .addComponent(top5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonjugar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botoninst)
+                            .addComponent(botontop, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(salir)
+                        .addComponent(botonsalir)
                         .addGap(64, 64, 64))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -63,13 +63,13 @@ public class menuPrincipal extends JFrame implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonjugar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(instrucciones)
+                        .addComponent(botoninst)
                         .addGap(18, 18, 18)
-                        .addComponent(top5)
+                        .addComponent(botontop)
                         .addGap(49, 49, 49)
-                        .addComponent(salir))
+                        .addComponent(botonsalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -77,10 +77,10 @@ public class menuPrincipal extends JFrame implements ActionListener {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE)));
 
-		jugar.addActionListener(this);
-		instrucciones.addActionListener(this);
-		top5.addActionListener(this);
-		salir.addActionListener(this);
+		botonjugar.addActionListener(this);
+		botoninst.addActionListener(this);
+		botontop.addActionListener(this);
+		botonsalir.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -88,21 +88,21 @@ public class menuPrincipal extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == instrucciones) {
+		if (pulsado == botoninst) {
 			new instrucciones().setVisible(true);
 			this.dispose();
 		}
-		if (pulsado == top5) {
+		if (pulsado == botontop) {
 			new puntuaciones().setVisible(true);
 			this.dispose();
 		}
 
-		else if (pulsado == jugar) {
+		else if (pulsado == botonjugar) {
 			new preguntarRegistro().setVisible(true);
 			this.dispose();
 		}
 
-		if (pulsado == salir) {
+		if (pulsado == botonsalir) {
 			this.dispose();
 		}
 	}
