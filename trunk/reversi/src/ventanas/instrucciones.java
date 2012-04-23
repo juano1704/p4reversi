@@ -14,6 +14,8 @@ public class instrucciones extends JFrame implements ActionListener {
 	JButton volver = new JButton();
 
 	public instrucciones() {
+		
+		this.setTitle("Instrucciones");
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -39,7 +41,7 @@ public class instrucciones extends JFrame implements ActionListener {
 
 		jScrollPane1.setViewportView(jTextArea1);
 
-		jLabel1.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 17));
 		jLabel1.setText("INSTRUCCIONES");
 
 		volver.setText("VOLVER");

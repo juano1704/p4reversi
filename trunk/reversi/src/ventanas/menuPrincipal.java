@@ -27,9 +27,10 @@ public class menuPrincipal extends JFrame implements ActionListener {
 		imagenes = new ImageIcon("src\\imagenes\\reversiMenuPrincipal.jpg");
 
 		jLabel1.setIcon(imagenes);
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+		jLabel2.setFont(new java.awt.Font("Tahoma", 5, 30)); // NOI18N
 		jLabel2.setText("REVERSI");
 
+		this.setTitle("Menú Principal");
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

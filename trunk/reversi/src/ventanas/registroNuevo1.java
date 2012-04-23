@@ -29,6 +29,7 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		jTextPane1 = new javax.swing.JTextPane();
 		jTextPane2 = new javax.swing.JTextPane();
 
+		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 17));
 		jLabel1.setText("NUEVO REGISTRO 1");
 		jLabel2.setText("Nombre jugador:");
 		jLabel3.setText("Password:");
@@ -84,7 +85,7 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 																.addComponent(
 																		jLabel1,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		118,
+																		155,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
 												.addGroup(
 														layout.createSequentialGroup()

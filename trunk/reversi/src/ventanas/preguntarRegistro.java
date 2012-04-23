@@ -20,11 +20,13 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		registrarse = new javax.swing.JButton();
 		invitado = new javax.swing.JButton();
 
+		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 16));
 		jLabel1.setText("¿QUIERES REGISTRARTE?");
 
 		registrarse.setText("Registrarse");
 		invitado.setText("Modo invitado");
 
+		this.setTitle("Registro:");
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +52,7 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 										Short.MAX_VALUE)
 								.addComponent(jLabel1,
 										javax.swing.GroupLayout.PREFERRED_SIZE,
-										191,
+										195,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addGap(87, 87, 87)));
 		layout.setVerticalGroup(layout
