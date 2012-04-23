@@ -18,12 +18,14 @@ public class juego extends JFrame implements ActionListener {
 	
 	ImageIcon blanca = new ImageIcon();
 	ImageIcon negra = new ImageIcon();
+	ImageIcon tablero = new ImageIcon();
 
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		blanca = new ImageIcon("src\\imagenes\\blanca.jpg");
 		negra = new ImageIcon("src\\imagenes\\negra.jpg");
+		tablero = new ImageIcon("src\\imagenes\\tablero.jpg");
 		
 		opciones = new JButton();
 
@@ -37,6 +39,7 @@ public class juego extends JFrame implements ActionListener {
 
 		opciones.setText("Opciones");
 
+		jLabel1.setIcon(tablero);
 		jLabel2.setText("Jugador 1:");
 		jLabel3.setText("Jugador 2:");
 		jLabel4.setIcon(blanca);
@@ -53,14 +56,12 @@ public class juego extends JFrame implements ActionListener {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(opciones)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -68,15 +69,12 @@ public class juego extends JFrame implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel2))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -93,6 +91,10 @@ public class juego extends JFrame implements ActionListener {
                 .addGap(62, 62, 62)
                 .addComponent(opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
 		opciones.addActionListener(this);
