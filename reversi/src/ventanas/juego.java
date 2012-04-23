@@ -47,7 +47,7 @@ public class juego extends JFrame implements ActionListener {
 		jLabel6.setText("NUM");
 		jLabel7.setText("NUM");
 
-		this.setTitle("Reversi");
+		this.setTitle("Tabla de Juego");
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 

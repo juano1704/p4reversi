@@ -23,13 +23,14 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 		ok = new javax.swing.JButton();
 		volvermenu = new javax.swing.JButton();
 
-		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 20));
 		jLabel1.setText("PUNTUACIONES");
 		jLabel2.setText("Buscar usuario:");
 
 		ok.setText("OK");
 		volvermenu.setText("Volver al menú");
 
+		this.setTitle("Puntuaciones");
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

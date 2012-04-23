@@ -29,11 +29,12 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 		ok.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 		ok.setText("OK");
 
-		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 17)); // NOI18N
 		jLabel1.setText("JUGADOR 1:");
 		jLabel2.setText("Nombre jugador:");
 		jLabel3.setText("Password:");
 
+		this.setTitle("Registro Jugador 1");
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
