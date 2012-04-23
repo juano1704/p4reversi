@@ -21,9 +21,10 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
+		
+		jTextField1 = new javax.swing.JTextField();
 
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jScrollPane2 = new javax.swing.JScrollPane();
+		jPasswordField1 = new javax.swing.JPasswordField();
 
 		jTextPane1 = new javax.swing.JTextPane();
 		jTextPane2 = new javax.swing.JTextPane();
@@ -34,9 +35,6 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 
 		jButton1.setText("Continuar");
 		jButton2.setText("Cancelar");
-
-		jScrollPane1.setViewportView(jTextPane1);
-		jScrollPane2.setViewportView(jTextPane2);
 
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,9 +103,9 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 																		layout.createParallelGroup(
 																				javax.swing.GroupLayout.Alignment.LEADING)
 																				.addComponent(
-																						jScrollPane1)
+																						jTextField1)
 																				.addComponent(
-																						jScrollPane2))))
+																						jPasswordField1))))
 								.addGap(130, 130, 130)));
 		layout.setVerticalGroup(layout
 				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +123,7 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 												javax.swing.GroupLayout.Alignment.TRAILING)
 												.addComponent(jLabel2)
 												.addComponent(
-														jScrollPane1,
+														jTextField1,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,7 +133,7 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 												javax.swing.GroupLayout.Alignment.LEADING)
 												.addComponent(jLabel3)
 												.addComponent(
-														jScrollPane2,
+														jPasswordField1,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,8 +207,8 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JScrollPane jScrollPane2;
+	private javax.swing.JTextField jTextField1;
+	private javax.swing.JPasswordField jPasswordField1;
 	private javax.swing.JTextPane jTextPane1;
 	private javax.swing.JTextPane jTextPane2;
 }
