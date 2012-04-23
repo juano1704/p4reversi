@@ -110,7 +110,7 @@ public class Usuario {
 			contraseña = Utilidades.leerCadena();
 		}
 		u.setContraseña(contraseña);
-		lU.add(lU.size(),u);
+		lU.add(u);
 		u.mostrar();
 	}
 

@@ -162,6 +162,7 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 		if (pulsado == jButton2)// OK
 		{
 			u.setNombre(jTextField1.getText());
+			u.setContraseña(jPasswordField1.getText());
 			u.mostrar();
 			new registro2().setVisible(true);
 			this.dispose();
