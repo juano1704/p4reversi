@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import clases.Usuario;
+
 public class registro1 extends javax.swing.JFrame implements ActionListener {
 
 	public registro1() {
@@ -150,6 +152,8 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
+		Usuario u = new Usuario();
+		
 		if (pulsado == jButton1)// Registrarse
 		{
 			new registroNuevo1().setVisible(true);
@@ -157,6 +161,8 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 		}
 		if (pulsado == jButton2)// OK
 		{
+			u.setNombre(jTextField1.getText());
+			u.mostrar();
 			new registro2().setVisible(true);
 			this.dispose();
 		}
