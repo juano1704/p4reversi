@@ -25,7 +25,7 @@ public class juego extends JFrame implements ActionListener {
 		blanca = new ImageIcon("src\\imagenes\\blanca.jpg");
 		negra = new ImageIcon("src\\imagenes\\negra.jpg");
 		
-		jButton1 = new JButton();
+		opciones = new JButton();
 
 		jLabel1 = new JLabel(); // imagen del tablero en juego
 		jLabel2 = new JLabel();
@@ -35,7 +35,7 @@ public class juego extends JFrame implements ActionListener {
 		jLabel6 = new JLabel();
 		jLabel7 = new JLabel();
 
-		jButton1.setText("Opciones");
+		opciones.setText("Opciones");
 
 		jLabel2.setText("Jugador 1:");
 		jLabel3.setText("Jugador 2:");
@@ -57,7 +57,7 @@ public class juego extends JFrame implements ActionListener {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(opciones)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel3)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -91,11 +91,11 @@ public class juego extends JFrame implements ActionListener {
                     .addComponent(jLabel5)
                     .addComponent(jLabel7))
                 .addGap(62, 62, 62)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(opciones, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63))
         );
 
-		jButton1.addActionListener(this);
+		opciones.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -103,7 +103,7 @@ public class juego extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == jButton1) 
+		if (pulsado == opciones) 
 			opciones();
 	}
 
@@ -172,7 +172,7 @@ public class juego extends JFrame implements ActionListener {
 	}
 
 	// Declaracion de variables
-	private JButton jButton1;
+	private JButton opciones;
 	private JLabel jLabel1;
 	private JLabel jLabel2;
 	private JLabel jLabel3;

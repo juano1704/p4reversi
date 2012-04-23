@@ -19,8 +19,8 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 		jLabel2 = new javax.swing.JLabel();
 		jLabel3 = new javax.swing.JLabel();
 
-		jButton1 = new javax.swing.JButton();
-		jButton2 = new javax.swing.JButton();
+		continuar = new javax.swing.JButton();
+		cancelar = new javax.swing.JButton();
 		
 		jTextField1 = new javax.swing.JTextField();
 
@@ -33,8 +33,8 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 		jLabel2.setText("Nombre jugador:");
 		jLabel3.setText("Password:");
 
-		jButton1.setText("Continuar");
-		jButton2.setText("Cancelar");
+		continuar.setText("Continuar");
+		cancelar.setText("Cancelar");
 
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,7 +55,7 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 																		122,
 																		122)
 																.addComponent(
-																		jButton1,
+																		continuar,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		158,
 																		javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -65,7 +65,7 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 																		148,
 																		148)
 																.addComponent(
-																		jButton2,
+																		cancelar,
 																		javax.swing.GroupLayout.PREFERRED_SIZE,
 																		107,
 																		javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -140,16 +140,16 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.RELATED,
 										21, Short.MAX_VALUE)
-								.addComponent(jButton1,
+								.addComponent(continuar,
 										javax.swing.GroupLayout.PREFERRED_SIZE,
 										37,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(
 										javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addComponent(jButton2).addGap(19, 19, 19)));
+								.addComponent(cancelar).addGap(19, 19, 19)));
 
-		jButton1.addActionListener(this);
-		jButton2.addActionListener(this);
+		continuar.addActionListener(this);
+		cancelar.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -157,12 +157,12 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == jButton1)// Continuar
+		if (pulsado == continuar)// Continuar
 		{
 			new juego().setVisible(true);
 			this.dispose();
 		}
-		if (pulsado == jButton2)// Cancelar
+		if (pulsado == cancelar)// Cancelar
 		{
 			new registro2().setVisible(true);
 			this.dispose();
@@ -202,8 +202,8 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 	}
 
 	// Declaracion de variables
-	private javax.swing.JButton jButton1;
-	private javax.swing.JButton jButton2;
+	private javax.swing.JButton continuar;
+	private javax.swing.JButton cancelar;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
