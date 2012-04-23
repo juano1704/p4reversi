@@ -20,15 +20,15 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 
 		jTextField1 = new javax.swing.JTextField();
 
-		jButton1 = new javax.swing.JButton();
-		jButton2 = new javax.swing.JButton();
+		ok = new javax.swing.JButton();
+		volvermenu = new javax.swing.JButton();
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
 		jLabel1.setText("PUNTUACIONES");
 		jLabel2.setText("Buscar usuario:");
 
-		jButton1.setText("OK");
-		jButton2.setText("Volver al menú");
+		ok.setText("OK");
+		volvermenu.setText("Volver al menú");
 
 		this.setResizable(false);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,10 +55,10 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(ok)
                                         .addGap(50, 50, 50))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(volvermenu)
                                         .addGap(21, 21, 21)))))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -75,14 +75,14 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(volvermenu)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-		jButton1.addActionListener(this);
-		jButton2.addActionListener(this);
+		ok.addActionListener(this);
+		volvermenu.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -90,12 +90,12 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == jButton1)// OK
+		if (pulsado == ok)// OK
 		{
 			new juego().setVisible(true);
 			this.dispose();
 		}
-		if (pulsado == jButton2)// Volver a menu
+		if (pulsado == volvermenu)// Volver a menu
 		{
 			new menuPrincipal().setVisible(true);
 			this.dispose();
@@ -135,8 +135,8 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 	}
 
 	// Declaracion de variables
-	private javax.swing.JButton jButton1;
-	private javax.swing.JButton jButton2;
+	private javax.swing.JButton ok;
+	private javax.swing.JButton volvermenu;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;

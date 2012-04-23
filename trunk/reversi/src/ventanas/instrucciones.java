@@ -11,7 +11,7 @@ public class instrucciones extends JFrame implements ActionListener {
 	JScrollPane jScrollPane1 = new JScrollPane();
 	JTextArea jTextArea1 = new JTextArea();
 	JLabel jLabel1 = new JLabel();
-	JButton jButton1 = new JButton();
+	JButton volver = new JButton();
 
 	public instrucciones() {
 		this.setResizable(false);
@@ -42,7 +42,7 @@ public class instrucciones extends JFrame implements ActionListener {
 		jLabel1.setFont(new Font("Tahoma", 1, 14)); // NOI18N
 		jLabel1.setText("INSTRUCCIONES");
 
-		jButton1.setText("VOLVER");
+		volver.setText("VOLVER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +58,7 @@ public class instrucciones extends JFrame implements ActionListener {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(volver)
                 .addGap(210, 210, 210))
         );
         layout.setVerticalGroup(
@@ -69,11 +69,11 @@ public class instrucciones extends JFrame implements ActionListener {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(volver)
                 .addContainerGap())
         );
 
-		jButton1.addActionListener(this);
+		volver.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -81,7 +81,7 @@ public class instrucciones extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == jButton1) {
+		if (pulsado == volver) {
 			new menuPrincipal().setVisible(true);
 			this.dispose();
 		}
