@@ -137,7 +137,7 @@ public class juego extends JFrame implements ActionListener {
 	    	  if(codigo==1||codigo==2){
 	    		  opciones();
 	    	  }
-	}
+	      }
 	}
 	public static void main(String args[]) {
 
