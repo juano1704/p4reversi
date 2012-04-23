@@ -58,7 +58,14 @@ public class Usuario {
 		System.out.println("Número de partidas jugadas:" + partidasJugadas);
 		System.out.println("Número de partidas ganadas:" + partidasGanadas);
 	}
-
+	
+	public static boolean buscarUsuario (Usuario x, Lista lUsuarios){
+		boolean enc;
+		
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		String nombre;
 		String contraseña;
