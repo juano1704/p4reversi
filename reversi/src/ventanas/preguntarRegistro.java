@@ -17,14 +17,14 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 
 		jLabel1 = new javax.swing.JLabel();
 
-		botonreg = new javax.swing.JButton();
-		botoninv = new javax.swing.JButton();
+		botonRegistrarse = new javax.swing.JButton();
+		botonModoInvitado = new javax.swing.JButton();
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 16));
 		jLabel1.setText("¿QUIERES REGISTRARTE?");
 
-		botonreg.setText("Registrarse");
-		botoninv.setText("Modo invitado");
+		botonRegistrarse.setText("Registrarse");
+		botonModoInvitado.setText("Modo invitado");
 
 		this.setTitle("Registro:");
 		this.setResizable(false);
@@ -38,11 +38,11 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 				.addGroup(
 						layout.createSequentialGroup()
 								.addGap(52, 52, 52)
-								.addComponent(botonreg,
+								.addComponent(botonRegistrarse,
 										javax.swing.GroupLayout.PREFERRED_SIZE,
 										138,
 										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18).addComponent(botoninv)
+								.addGap(18, 18, 18).addComponent(botonModoInvitado)
 								.addContainerGap(57, Short.MAX_VALUE))
 				.addGroup(
 						javax.swing.GroupLayout.Alignment.TRAILING,
@@ -70,19 +70,19 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 												javax.swing.GroupLayout.Alignment.LEADING,
 												false)
 												.addComponent(
-														botonreg,
+														botonRegistrarse,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														Short.MAX_VALUE)
 												.addComponent(
-														botoninv,
+														botonModoInvitado,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														67,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
 								.addContainerGap(38, Short.MAX_VALUE)));
 
-		botonreg.addActionListener(this);
-		botoninv.addActionListener(this);
+		botonRegistrarse.addActionListener(this);
+		botonModoInvitado.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -90,11 +90,11 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == botonreg)// Registrarse
+		if (pulsado == botonRegistrarse)// Registrarse
 		{
 			new registro1().setVisible(true);
 			this.dispose();
-		} else if (pulsado == botoninv)// Modo invitado
+		} else if (pulsado == botonModoInvitado)// Modo invitado
 		{
 			new juego().setVisible(true);
 			this.dispose();
@@ -138,7 +138,7 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 	}
 
 	// Declaracion de variables
-	private javax.swing.JButton botonreg;
-	private javax.swing.JButton botoninv;
+	private javax.swing.JButton botonRegistrarse;
+	private javax.swing.JButton botonModoInvitado;
 	private javax.swing.JLabel jLabel1;
 }
