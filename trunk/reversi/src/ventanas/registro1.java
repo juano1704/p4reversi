@@ -14,8 +14,8 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
-		botonreg = new javax.swing.JButton();
-		botonok = new javax.swing.JButton();
+		botonRegistrarse = new javax.swing.JButton();
+		botonOk = new javax.swing.JButton();
 
 		jLabel1 = new javax.swing.JLabel();
 		jLabel2 = new javax.swing.JLabel();
@@ -25,9 +25,9 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 
 		jPasswordField1 = new javax.swing.JPasswordField();
 
-		botonreg.setText("Registrarse");
-		botonok.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-		botonok.setText("OK");
+		botonRegistrarse.setText("Registrarse");
+		botonOk.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+		botonOk.setText("OK");
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 17)); // NOI18N
 		jLabel1.setText("JUGADOR 1:");
@@ -83,13 +83,13 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 										layout.createParallelGroup(
 												javax.swing.GroupLayout.Alignment.LEADING)
 												.addComponent(
-														botonok,
+														botonOk,
 														javax.swing.GroupLayout.Alignment.TRAILING,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														70,
 														javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addComponent(
-														botonreg,
+														botonRegistrarse,
 														javax.swing.GroupLayout.Alignment.TRAILING))
 								.addGap(33,33,33)));
 		layout.setVerticalGroup(layout
@@ -105,7 +105,7 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														23,
 														javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addComponent(botonreg))
+												.addComponent(botonRegistrarse))
 								.addGap(33,33,33)
 								.addGroup(
 										layout.createParallelGroup(
@@ -136,14 +136,14 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 																						javax.swing.GroupLayout.DEFAULT_SIZE,
 																						javax.swing.GroupLayout.PREFERRED_SIZE)))
 												.addComponent(
-														botonok,
+														botonOk,
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														50,
 														javax.swing.GroupLayout.PREFERRED_SIZE))
 								.addContainerGap(37, Short.MAX_VALUE)));
 
-		botonreg.addActionListener(this);
-		botonok.addActionListener(this);
+		botonRegistrarse.addActionListener(this);
+		botonOk.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -151,12 +151,12 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == botonreg)// Registrarse
+		if (pulsado == botonRegistrarse)// Registrarse
 		{
 			new registroNuevo1().setVisible(true);
 			this.dispose();
 		}
-		if (pulsado == botonok)// OK
+		if (pulsado == botonOk)// OK
 		{
 			new registro2().setVisible(true);
 			this.dispose();
@@ -196,8 +196,8 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 	}
 
 	// Declaracion de variables
-	private javax.swing.JButton botonreg;
-	private javax.swing.JButton botonok;
+	private javax.swing.JButton botonRegistrarse;
+	private javax.swing.JButton botonOk;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;

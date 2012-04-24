@@ -11,7 +11,7 @@ public class instrucciones extends JFrame implements ActionListener {
 	JScrollPane jScrollPane1 = new JScrollPane();
 	JTextArea jTextArea1 = new JTextArea();
 	JLabel jLabel1 = new JLabel();
-	JButton botonvolver = new JButton();
+	JButton botonVolver = new JButton();
 
 	public instrucciones() {
 		
@@ -44,7 +44,7 @@ public class instrucciones extends JFrame implements ActionListener {
 		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 17));
 		jLabel1.setText("INSTRUCCIONES");
 
-		botonvolver.setText("VOLVER");
+		botonVolver.setText("VOLVER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,7 +60,7 @@ public class instrucciones extends JFrame implements ActionListener {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonvolver)
+                .addComponent(botonVolver)
                 .addGap(210, 210, 210))
         );
         layout.setVerticalGroup(
@@ -71,11 +71,11 @@ public class instrucciones extends JFrame implements ActionListener {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(botonvolver)
+                .addComponent(botonVolver)
                 .addContainerGap())
         );
 
-		botonvolver.addActionListener(this);
+		botonVolver.addActionListener(this);
 
 		pack();
 		this.setLocationRelativeTo(null);
@@ -83,7 +83,7 @@ public class instrucciones extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
-		if (pulsado == botonvolver) {
+		if (pulsado == botonVolver) {
 			new menuPrincipal().setVisible(true);
 			this.dispose();
 		}
