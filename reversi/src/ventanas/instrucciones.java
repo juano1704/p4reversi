@@ -9,8 +9,9 @@ import javax.swing.*;
 
 public class instrucciones extends JFrame implements ActionListener {
 	JScrollPane jScrollPane1 = new JScrollPane();
-	JTextArea jTextArea1 = new JTextArea();
 	JLabel jLabel1 = new JLabel();
+	JLabel texto = new JLabel();
+	ImageIcon imagenes;
 	JButton botonVolver = new JButton();
 
 	public instrucciones() {
@@ -18,28 +19,12 @@ public class instrucciones extends JFrame implements ActionListener {
 		this.setTitle("Instrucciones");
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		imagenes = new ImageIcon("src\\imagenes\\instrucciones.jpg");
 
-		jTextArea1.setColumns(20);
-		jTextArea1.setFont(new Font("Monospaced", 0, 12)); // NOI18N
-		jTextArea1.setRows(1);
-		jTextArea1.setEditable(false);
-		jTextArea1
-				.setText("   El Reversi es un juego de tablero en el\n "
-						+ "que compiten dos jugadores con fichas de\n"
-						+ " diferente color (blancas/negras) en un\n "
-						+ "tablero de 64 casillas (8 x 8). \n\n   "
-						+ "En su turno cada jugador coloca una pieza\n "
-						+ "de su color en una casilla vacía del\n "
-						+ "tablero que debe ser adyacente a una ficha\n "
-						+ "del contrario y además en línea con otra\n "
-						+ "ficha propia (horizontal, vertical o\n "
-						+ "diagonal). \n\n   Tras colocar una pieza nueva, todas las\n "
-						+ "fichas del contrario que se encuentre\n "
-						+ "entre dos piezas del jugador (en línea\n "
-						+ "horizontal, vertical o diagonal) son\n "
-						+ "convertidas al color del jugador.");
+		texto.setIcon(imagenes);
 
-		jScrollPane1.setViewportView(jTextArea1);
+		jScrollPane1.setViewportView(texto);
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 0, 17));
 		jLabel1.setText("INSTRUCCIONES");
