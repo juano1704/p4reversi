@@ -133,8 +133,8 @@ public class Juego implements Serializable {
 
    /**
 	* Devuelve el color de la ficha que está en una casilla, o VACIA si no contiene ficha
-	* @param fila fila de la casilla especificada
-	* @param col columna de la casilla especificada
+	* @param fila: fila de la casilla especificada
+	* @param col: columna de la casilla especificada
 	* @return el color de la ficha en dicha fila y columna.
 	* @throws Exception si la posición especificada se sale del tablero (fila>7, fila<0, 
 	* col>7, col<0).

@@ -1,9 +1,7 @@
 package otelo;
 
 import java.io.Serializable;
-
 /**
- * 
  * Representa la posición de una casilla en el tablero. Prácticamente actúa como
  * si fuera un <em>struct</em> que agrupa fila y columna.
  *
