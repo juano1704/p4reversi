@@ -37,7 +37,7 @@ public class OteloGUI extends JFrame implements Runnable {
       //cuestiones gráficas
       crearComponentes();
       //inicializar ventana
-      setTitle("Fundamentos de Inteligencia Artificial: Otelo");
+      setTitle("mierdo del Otelo muahahahaah(hay qe cambiar esto juoojo)");
       setVisible(true);
       addWindowListener(new WindowAdapter() {
          public void windowClosing(WindowEvent e) {
