@@ -15,6 +15,7 @@ public class PanelTablero extends JPanel implements MouseListener {
    public final static Color COLOR_TABLERO = new Color(17,149,7);
    public final static int TAM_CASILLA = 40;
    public final static int TAM_FICHA= 30;
+   public final static int TAM_FICHA_POS= 15;
    public final static int MARGEN_CASILLA = (TAM_CASILLA - TAM_FICHA)/2;
 
    private Juego j;
@@ -41,6 +42,13 @@ public class PanelTablero extends JPanel implements MouseListener {
       g.fillOval(col*TAM_CASILLA+MARGEN_CASILLA, fila*TAM_CASILLA+MARGEN_CASILLA, TAM_FICHA, TAM_FICHA);
       g.setColor(colorAct);
    }
+   
+   private void dibujaFichaPosible(Graphics g, byte color, int fila, int col) {
+	      Color colorAct;
+	      colorAct = new Color(170,14,57);
+	      g.fillOval(col*TAM_CASILLA+MARGEN_CASILLA, fila*TAM_CASILLA+MARGEN_CASILLA, TAM_FICHA_POS, TAM_FICHA);
+	      g.setColor(colorAct);
+	   }
 
    public void paint(Graphics g) {
       int lin;
