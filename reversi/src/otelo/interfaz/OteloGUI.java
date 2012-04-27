@@ -165,7 +165,6 @@ public class OteloGUI extends JFrame implements Runnable {
 		 	System.out.println("pausa");
 		 	return;
 		 }
-		    
 		 
 		 //comprobar si el movimiento es válido
 		 if (j.ponerFicha(j.getTurno(), jAct.getJugada())) {
