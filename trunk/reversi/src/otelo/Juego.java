@@ -97,9 +97,9 @@ public class Juego implements Serializable {
 
    /**
 	* Devuelve el número de fichas de un determinado color que hay en el tablero.
-	* @param color color de las fichas.
-	* @see Juego#BLANCAS BLANCAS
-	* @see Juego#NEGRAS NEGRAS
+	* @param color de las fichas.
+	* @see Juego#BLANCAS
+	* @see Juego#NEGRAS
 	* @return número de fichas de ese color.
 	*/
    public int getNumFichas(byte color) {
