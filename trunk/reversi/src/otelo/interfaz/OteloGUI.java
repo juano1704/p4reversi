@@ -111,8 +111,12 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		menuArchivo.add(miPausa);
 		
 		botonOpciones= new JButton("Opciones");
+		JLabel blanco = new JLabel("");
+		pDatos.add(blanco);
 		pDatos.add(botonOpciones);
 		botonOpciones.addActionListener(this);
+		botonOpciones.setEnabled(false);
+		this.setResizable(false);
 		pack();
 		this.setLocationRelativeTo(null);
 	
@@ -131,7 +135,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		if (code == 0)// Reiniciar
 		{
 			this.dispose();
-			new juego().setVisible(true);
+			new OteloGUI();
 		}
 		if (code == 1) {
 			// guardar
@@ -142,13 +146,16 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		}
 		if (code == 2)// Menu Principal
 		{
-			int codigo = JOptionPane.showConfirmDialog(null,
-					"¿Seguro que quiere salir?");
+			int confirmationType = JOptionPane.QUESTION_MESSAGE;
+			String[] confirmationOptions = { "Si", "No"};
+			int codigo = JOptionPane.showOptionDialog(null, " ¿Seguro que desea salir?", "",
+					0, confirmationType, null, confirmationOptions, "Si");
+		
 			if (codigo == 0) {
 				this.dispose();
 				new menuPrincipal().setVisible(true);
 			}
-			if (codigo == 1 || codigo == 2) {
+			if (codigo == 1) {
 				opciones();
 			}
 		}
@@ -231,13 +238,9 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	}
 
 	private class GestorMenu implements ActionListener, ItemListener {
-		private JFrame ventana;
+		
 
 		public GestorMenu() {
-		}
-
-		public GestorMenu(JFrame vent) {
-			ventana = vent;
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -261,6 +264,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			nomJugNegras.setText(jNegras.getNombre());
 			miPausa.setEnabled(true);
 			jugar();
+			botonOpciones.setEnabled(true);
 		}
 
 
