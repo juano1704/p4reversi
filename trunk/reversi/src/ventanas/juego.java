@@ -9,12 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+import otelo.interfaz.OteloGUI;
+import otelo.interfaz.PanelTablero;
+
 public class juego extends JFrame implements ActionListener {
 
 	public juego() {
 		initComponents();
 	}
 
+	PanelTablero p = new PanelTablero();
 	ImageIcon blanca = new ImageIcon();
 	ImageIcon negra = new ImageIcon();
 	ImageIcon tablero = new ImageIcon();
@@ -39,7 +43,9 @@ public class juego extends JFrame implements ActionListener {
 
 		botonOpciones.setText("Opciones");
 
-		jLabel1.setIcon(tablero);
+		p.setBounds(30, 80, 320, 320);
+		this.add(p);
+		
 		jLabel2.setText("Jugador 1:");
 		jLabel3.setText("Jugador 2:");
 		jLabel4.setIcon(blanca);
@@ -156,37 +162,12 @@ public class juego extends JFrame implements ActionListener {
 		}
 	}
 
-	public static void main(String args[]) {
-
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(juego.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(juego.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(juego.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(juego.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		}
-
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				new juego().setVisible(true);
-			}
-		});
-	}
+	public static void main(String[] args) {
+	      new juego();
+	      
+	  }
+	
+	
 
 	// Declaracion de variables
 	private JButton botonOpciones;

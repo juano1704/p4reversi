@@ -203,8 +203,8 @@ public class OteloGUI extends JFrame implements Runnable {
 			Jugador jBlancas, jNegras;
 
 			// elegir tipos de jugador
-			jBlancas = elegirJugador(ventana, Juego.BLANCAS);
-			jNegras = elegirJugador(ventana, Juego.NEGRAS);
+			jBlancas = new JugadorHumano(Juego.BLANCAS);
+			jNegras = new JugadorHumano(Juego.NEGRAS);
 			// comenzar partida
 			j = new Juego(jBlancas, jNegras);
 			p.setJuego(j);
@@ -215,17 +215,6 @@ public class OteloGUI extends JFrame implements Runnable {
 			jugar();
 		}
 
-		private Jugador elegirJugador(JFrame ventana, byte color) {
-			String nomJugador;
-
-			nomJugador = (String) JOptionPane.showInputDialog(ventana,
-					Juego.nomColores[color], "Elegir jugador",
-					JOptionPane.PLAIN_MESSAGE, null, tiposJugador, "uno");
-			if (nomJugador.equals(MAQUINA))
-				return new JugadorMaquina(color);
-			else
-				return new JugadorHumano(color);
-		}
 
 		@Override
 		public void itemStateChanged(ItemEvent arg0) {
