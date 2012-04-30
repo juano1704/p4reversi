@@ -98,7 +98,8 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 			this.dispose();
 		} else if (pulsado == botonModoInvitado)// Modo invitado
 		{
-			new OteloGUI().setVisible(true);
+
+			new OteloGUI();
 			this.dispose();
 		}
 	}
