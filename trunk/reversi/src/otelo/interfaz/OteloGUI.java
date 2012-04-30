@@ -1,16 +1,19 @@
 package otelo.interfaz;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import otelo.*;
 import otelo.jugadores.*;
+import ventanas.juego;
+import ventanas.menuPrincipal;
 
 /**
  * Interfaz gráfico del Otelo. Es la clase principal.
  */
-public class OteloGUI extends JFrame implements Runnable {
+public class OteloGUI extends JFrame implements Runnable, ActionListener {
 
 	public static final long T_CHEQUEO = 100;
 	private static final String HUMANO = "Humano";
@@ -28,6 +31,7 @@ public class OteloGUI extends JFrame implements Runnable {
 	private Container pFichas;
 	private JLabel mensajes;
 	private JMenuItem miNuevo, miPausa;
+	private JButton botonOpciones;
 
 	public OteloGUI() {
 
@@ -66,6 +70,7 @@ public class OteloGUI extends JFrame implements Runnable {
 		pJugadores.add(new JLabel("Negras: "));
 		nomJugNegras = new JLabel("---------------");
 		pJugadores.add(nomJugNegras);
+		
 		// numero de fichas
 		pFichas = Box.createHorizontalBox();
 		pFichas.add(new JLabel("Blancas: "));
@@ -104,6 +109,49 @@ public class OteloGUI extends JFrame implements Runnable {
 		miPausa.addItemListener(new GestorMenu());
 		miPausa.setEnabled(false);
 		menuArchivo.add(miPausa);
+		
+		botonOpciones= new JButton("Opciones");
+		pDatos.add(botonOpciones);
+		botonOpciones.addActionListener(this);
+		pack();
+		this.setLocationRelativeTo(null);
+	
+	}
+	public void actionPerformed(ActionEvent e) {
+		JButton pulsado = (JButton) e.getSource();
+		if (pulsado == botonOpciones)
+			opciones();
+	}
+	public void opciones() {
+		int messageType = JOptionPane.QUESTION_MESSAGE;
+		String[] options = { "Reiniciar", "Guardar", "Menú Principal",
+				"Cancelar" };
+		int code = JOptionPane.showOptionDialog(null, " OPCIONES", "Opciones",
+				0, messageType, null, options, "Cancelar");
+		if (code == 0)// Reiniciar
+		{
+			this.dispose();
+			new juego().setVisible(true);
+		}
+		if (code == 1) {
+			// guardar
+		}
+		if (code == 3)// Cancelar
+		{
+
+		}
+		if (code == 2)// Menu Principal
+		{
+			int codigo = JOptionPane.showConfirmDialog(null,
+					"¿Seguro que quiere salir?");
+			if (codigo == 0) {
+				this.dispose();
+				new menuPrincipal().setVisible(true);
+			}
+			if (codigo == 1 || codigo == 2) {
+				opciones();
+			}
+		}
 	}
 
 	public void jugar() {
