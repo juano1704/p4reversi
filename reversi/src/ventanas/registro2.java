@@ -160,7 +160,7 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 		}
 		if (pulsado == botonOk)// OK
 		{
-			new OteloGUI().setVisible(true);
+			new OteloGUI();
 			this.dispose();
 		}
 	}
