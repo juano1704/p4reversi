@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import otelo.interfaz.OteloGUI;
+
 public class preguntarRegistro extends javax.swing.JFrame implements
 		ActionListener {
 
@@ -96,7 +98,7 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 			this.dispose();
 		} else if (pulsado == botonModoInvitado)// Modo invitado
 		{
-			new juego().setVisible(true);
+			new OteloGUI().setVisible(true);
 			this.dispose();
 		}
 	}
