@@ -24,7 +24,7 @@ public class menuPrincipal extends JFrame implements ActionListener {
 		botonTop5.setText("TOP 5");
 		botonSalir.setText("SALIR");
 
-		imagenes = new ImageIcon("src\\imagenes\\reversiMenuPrincipal.jpg");
+		imagenes = new ImageIcon("src\\reversiMenuPrincipal.jpg");
 
 		jLabel1.setIcon(imagenes);
 		jLabel2.setFont(new java.awt.Font("Tahoma", 5, 30)); // NOI18N

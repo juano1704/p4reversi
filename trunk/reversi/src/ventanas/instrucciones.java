@@ -20,7 +20,7 @@ public class instrucciones extends JFrame implements ActionListener {
 		this.setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		imagenes = new ImageIcon("src\\imagenes\\instrucciones.jpg");
+		imagenes = new ImageIcon("src\\instrucciones.jpg");
 
 		texto.setIcon(imagenes);
 
