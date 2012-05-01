@@ -15,7 +15,7 @@ import ventanas.menuPrincipal;
  */
 public class OteloGUI extends JFrame implements Runnable, ActionListener {
 
-	public static final long T_CHEQUEO = 100;
+	public static final long T_CHEQUEO = 10;
 	private static final String HUMANO = "Humano";
 	private static final String MAQUINA = "Máquina";
 	private static String tiposJugador[] = { HUMANO, MAQUINA };
