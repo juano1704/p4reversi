@@ -1,11 +1,12 @@
 package ventanas;
 
+import interfaz.GUI;
+
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.util.logging.*;
 import javax.swing.*;
 
-import otelo.interfaz.OteloGUI;
 
 public class registroNuevo2 extends javax.swing.JFrame implements
 		ActionListener {
@@ -162,7 +163,7 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 		JButton pulsado = (JButton) e.getSource();
 		if (pulsado == botonContinuar)// Continuar
 		{
-			new OteloGUI().setVisible(true);
+			new GUI().setVisible(true);
 			this.dispose();
 		}
 		if (pulsado == botonCancelar)// Cancelar
