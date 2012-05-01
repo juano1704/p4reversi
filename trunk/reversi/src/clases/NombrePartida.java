@@ -10,8 +10,6 @@ public class NombrePartida {
 		Partida p= new Partida();
 		guardarPartida(lPartidas);
 		
-		
-
 	}
 	
 	public static boolean guardarPartida(LinkedList<Partida> lPartidas)
@@ -39,32 +37,6 @@ public class NombrePartida {
 					lPartidas.remove(p);
 					lPartidas.add(i, p);
 			}
-			else
-				
-				Partida p1=new Partida();
-			p1=lPartidas.add
-				
-				
-			}
-			while(opc!='S'||opc!='s'||opc!='n'||opc!='N');
-			
-		
-			
-		
-			return true;
-			}
-	
-			else
-				return false;
-			i++;
-		
-		}	
-					
-			
-		
-		
-	}
-	
-
-}
 		}
+	}
+}

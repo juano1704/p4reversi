@@ -1,11 +1,12 @@
 package ventanas;
 
+import interfaz.GUI;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import otelo.interfaz.OteloGUI;
 
 public class preguntarRegistro extends javax.swing.JFrame implements
 		ActionListener {
@@ -99,7 +100,7 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		} else if (pulsado == botonModoInvitado)// Modo invitado
 		{
 
-			new OteloGUI();
+			new GUI();
 			this.dispose();
 		}
 	}

@@ -1,5 +1,8 @@
 package ventanas;
 
+import interfaz.GUI;
+import interfaz.PanelTablero;
+
 import java.awt.EventQueue;
 import java.awt.event.*;
 import java.util.logging.*;
@@ -9,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
-import otelo.interfaz.OteloGUI;
-import otelo.interfaz.PanelTablero;
 
 public class juego extends JFrame implements ActionListener {
 
