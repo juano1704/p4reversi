@@ -32,6 +32,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	private JLabel mensajes;
 	private JMenuItem miNuevo, miPausa;
 	private JButton botonOpciones;
+	private JButton botonEmpezar;
 
 	public OteloGUI() {
 
@@ -103,19 +104,24 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		menuArchivo = new JMenu("Partida");
 		barraMenu.add(menuArchivo);
 		miNuevo = new JMenuItem("Nueva");
-		miNuevo.addActionListener(new GestorMenu());
+		barraMenu.setVisible(false);
+		
 		menuArchivo.add(miNuevo);
 		miPausa = new JCheckBoxMenuItem("Pausa");
-		miPausa.addItemListener(new GestorMenu());
+		
 		miPausa.setEnabled(false);
 		menuArchivo.add(miPausa);
 		
 		botonOpciones= new JButton("Opciones");
+		botonEmpezar= new JButton("Empezar a jugar");
 		JLabel blanco = new JLabel("");
-		pDatos.add(blanco);
 		pDatos.add(botonOpciones);
+		pDatos.add(blanco);
+		blanco.setVisible(false);
+		botonOpciones.setVisible(false);
+		pDatos.add(botonEmpezar);
 		botonOpciones.addActionListener(this);
-		botonOpciones.setEnabled(false);
+		botonEmpezar.addActionListener(this);
 		this.setResizable(false);
 		pack();
 		this.setLocationRelativeTo(null);
@@ -125,6 +131,25 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		JButton pulsado = (JButton) e.getSource();
 		if (pulsado == botonOpciones)
 			opciones();
+		if (pulsado == botonEmpezar)
+			{
+			Jugador jBlancas, jNegras;
+
+			// elegir tipos de jugador
+			jBlancas = new JugadorHumano(Juego.BLANCAS);
+			jNegras = new JugadorHumano(Juego.NEGRAS);
+			// comenzar partida
+			j = new Juego(jBlancas, jNegras);
+			p.setJuego(j);
+			p.repaint();
+			nomJugBlancas.setText(jBlancas.getNombre());
+			nomJugNegras.setText(jNegras.getNombre());
+			miPausa.setEnabled(true);
+			botonEmpezar.setVisible(false);
+			botonOpciones.setVisible(true);
+			jugar();
+			
+			}
 	}
 	public void opciones() {
 		int messageType = JOptionPane.QUESTION_MESSAGE;
@@ -162,8 +187,10 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	}
 
 	public void jugar() {
+		
 		t = new Thread(this);
 		t.start();
+		
 	}
 
 	public void run() {
@@ -232,6 +259,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			mensajes.setText("¡¡Empate!!");
 
 	}
+	
 
 	public static void main(String[] args) {
 		new OteloGUI();
@@ -245,9 +273,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			// nueva partida
-			if (e.getSource() == miNuevo) {
-				nuevaPartida();
-			}
+			
 		}
 
 		private void nuevaPartida() {
@@ -264,7 +290,9 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			nomJugNegras.setText(jNegras.getNombre());
 			miPausa.setEnabled(true);
 			jugar();
-			botonOpciones.setEnabled(true);
+			botonEmpezar.setVisible(false);
+			botonOpciones.setVisible(true);
+			
 		}
 
 
