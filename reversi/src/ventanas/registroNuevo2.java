@@ -4,13 +4,17 @@ import otelo.interfaz.*;
 
 import java.awt.EventQueue;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.*;
 import javax.swing.*;
 
 
-public class registroNuevo2 extends javax.swing.JFrame implements
-		ActionListener {
+public class registroNuevo2 extends JFrame implements ActionListener {
 
+	private Connection conn;
 	public registroNuevo2() {
 		initComponents();
 	}
@@ -161,48 +165,93 @@ public class registroNuevo2 extends javax.swing.JFrame implements
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
+		String nombre, pass;
 		if (pulsado == botonContinuar)// Continuar
 		{
-			new OteloGUI();
-			this.dispose();
+			{
+				nombre=jTextField1.getText();
+				pass=jPasswordField1.getText();
+				if(nombre!="aunno" && nombre.length()>0 && pass.length()>=4){
+					try {
+						connect();
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						insertarUsuario(nombre, pass);
+						seleccionarUsuario(nombre);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						disconnect();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					try {
+						new OteloGUI();
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					this.dispose();
+				}
+				else{
+					int messageType = JOptionPane.QUESTION_MESSAGE;
+					String[] options = { "Volver a intentar" };
+					int code = JOptionPane.showOptionDialog(null, " ERROR", "Nombre de usuario o contraseña incorrectos",
+							0, messageType, null, options, "Volver a intentar");
+					if (code == 0)// Reiniciar
+					{
+						this.dispose();
+						new registroNuevo2().setVisible(true);
+						
+					}
+				}
 		}
 		if (pulsado == botonCancelar)// Cancelar
 		{
 			new registro2().setVisible(true);
 			this.dispose();
 		}
+		}
 	}
 
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+		
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
+	}
+	
+	public void seleccionarUsuario(String nombre) throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador2='"+nombre+"' where Jugador2='aunno'");
+		stat.executeUpdate();
+		stat.close();
+	}
+	
+	public void insertarUsuario(String nom, String pass) throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("insert into Usuario values (?, ?, 0, 0)");
+		stat.setString(1, nom);
+		stat.setString(2, pass);
+		stat.executeUpdate();
+		stat.close();
+	}
 	public static void main(String args[]) {
 
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo2.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		}
-
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				new registroNuevo2().setVisible(true);
-			}
-		});
+		new registroNuevo2().setVisible(true);
 	}
 
 	// Declaracion de variables

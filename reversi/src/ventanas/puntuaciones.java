@@ -93,8 +93,8 @@ public class puntuaciones extends javax.swing.JFrame implements ActionListener {
 		JButton pulsado = (JButton) e.getSource();
 		if (pulsado == botonOk)// OK
 		{
-			new juego().setVisible(true);
 			this.dispose();
+			new menuPrincipal().setVisible(true);
 		}
 		if (pulsado == botonVolverMenu)// Volver a menu
 		{

@@ -1,28 +1,26 @@
 package ventanas;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.*;
-import javax.swing.*;
 
-public class registroNuevo1 extends javax.swing.JFrame implements
-		ActionListener {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
+import otelo.interfaz.OteloGUI;
+
+public class registroNuevo1 extends JFrame implements ActionListener {
+
+	private Connection conn;
+	
 	public registroNuevo1() {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		botonContinuar = new javax.swing.JButton();
@@ -40,7 +38,7 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		jTextPane2 = new javax.swing.JTextPane();
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 5, 17));
-		jLabel1.setText("NUEVO REGISTRO 1");
+		jLabel1.setText("NUEVO REGISTRO");
 		jLabel2.setText("Nombre jugador:");
 		jLabel3.setText("Password:");
 
@@ -48,7 +46,7 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		botonCancelar.setText("Cancelar");
 
 		this.setResizable(false);
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
 				getContentPane());
@@ -167,7 +165,6 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		this.setLocationRelativeTo(null);
 	}
 
-	private Connection conn;
 	
 	public void connect() throws ClassNotFoundException, SQLException {
 		Class.forName("org.sqlite.JDBC");
@@ -181,30 +178,46 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		{
 			nombre=jTextField1.getText();
 			pass=jPasswordField1.getText();
-			try {
-				connect();
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(nombre!="aunno" && nombre.length()>0 && pass.length()>=4){
+				try {
+					connect();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					insertarUsuario(nombre, pass);
+					seleccionarUsuario(nombre);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					disconnect();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				new registro2().setVisible(true);
+				this.dispose();
 			}
-			try {
-				insertarUsuario(nombre, pass);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				disconnect();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			else{
+				int messageType = JOptionPane.QUESTION_MESSAGE;
+				String[] options = { "Volver a intentar" };
+				int code = JOptionPane.showOptionDialog(null, " ERROR", "Nombre de usuario o contraseña incorrectos",
+						0, messageType, null, options, "Volver a intentar");
+				if (code == 0)// Reiniciar
+				{
+					this.dispose();
+					new registroNuevo1().setVisible(true);
+					
+				}
 			}
 			
-			new registro2().setVisible(true);
-			this.dispose();
 		}
 		if (pulsado == botonCancelar)// Cancelar
 		{
@@ -218,8 +231,14 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		conn.close();
 	}
 	
+	public void seleccionarUsuario(String nombre)throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("insert into Jugadores values (?, 'aunno')");
+		stat.setString(1, nombre);
+		stat.executeUpdate();
+		stat.close();
+	}
 	public void insertarUsuario(String nom, String pass)throws SQLException{
-		PreparedStatement stat = conn.prepareStatement("insert into Usuario values (?, ?)");
+		PreparedStatement stat = conn.prepareStatement("insert into Usuario values (?, ?, 0, 0)");
 		stat.setString(1, nom);
 		stat.setString(2, pass);
 		stat.executeUpdate();
@@ -238,11 +257,8 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 	private javax.swing.JLabel jLabel2;
 	private javax.swing.JLabel jLabel3;
 
-	private javax.swing.JTextField JTextField;
-	private javax.swing.JTextField JTextField2;
-
-	private javax.swing.JTextField jTextField1;
-	private javax.swing.JPasswordField jPasswordField1;
+	private JTextField jTextField1;
+	private JTextField jPasswordField1;
 
 	private javax.swing.JTextPane jTextPane1;
 	private javax.swing.JTextPane jTextPane2;
