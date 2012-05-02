@@ -4,6 +4,8 @@ import otelo.interfaz.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -102,7 +104,15 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		} else if (pulsado == botonModoInvitado)// Modo invitado
 		{
 
-			new OteloGUI();
+			try {
+				new OteloGUI();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			this.dispose();
 		}
 	}

@@ -5,10 +5,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import otelo.*;
 import otelo.jugadores.*;
-import ventanas.juego;
 import ventanas.menuPrincipal;
+
 
 /**
  * Interfaz gráfico del Otelo. Es la clase principal.
@@ -23,6 +29,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	private Juego j;
 	private boolean pararPartida;
 	Thread t;
+	private Connection conn;
 
 	// componentes gráficos
 	private PanelTablero p;
@@ -34,7 +41,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	private JButton botonOpciones;
 	private JButton botonEmpezar;
 
-	public OteloGUI() {
+	public OteloGUI() throws ClassNotFoundException, SQLException {
 
 		// inicializar datos miembro
 		pararPartida = false;
@@ -52,7 +59,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 
 	}
 
-	private void crearComponentes() {
+	private void crearComponentes() throws ClassNotFoundException, SQLException {
 		JMenuBar barraMenu;
 		JMenu menuArchivo;
 		Container pJugadores;
@@ -63,13 +70,13 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		// jugadores
 		pJugadores = Box.createHorizontalBox();
 		pJugadores.add(new JLabel("Blancas: "));
-		nomJugBlancas = new JLabel("--------------");
+		nomJugBlancas = new JLabel("-----------");
 		pJugadores.add(nomJugBlancas);
 		pJugadores.add(Box.createHorizontalStrut(20));
 		pJugadores.add(new JLabel("vs"));
 		pJugadores.add(Box.createHorizontalStrut(20));
 		pJugadores.add(new JLabel("Negras: "));
-		nomJugNegras = new JLabel("---------------");
+		nomJugNegras = new JLabel("------------");
 		pJugadores.add(nomJugNegras);
 		
 		// numero de fichas
@@ -123,6 +130,13 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		botonOpciones.addActionListener(this);
 		botonEmpezar.addActionListener(this);
 		this.setResizable(false);
+		connect();
+		try {
+			nombres();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		pack();
 		this.setLocationRelativeTo(null);
 	
@@ -130,7 +144,15 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
 		if (pulsado == botonOpciones)
-			opciones();
+			try {
+				opciones();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		if (pulsado == botonEmpezar)
 			{
 			Jugador jBlancas, jNegras;
@@ -142,8 +164,6 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			j = new Juego(jBlancas, jNegras);
 			p.setJuego(j);
 			p.repaint();
-			nomJugBlancas.setText(jBlancas.getNombre());
-			nomJugNegras.setText(jNegras.getNombre());
 			miPausa.setEnabled(true);
 			botonEmpezar.setVisible(false);
 			botonOpciones.setVisible(true);
@@ -151,7 +171,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			
 			}
 	}
-	public void opciones() {
+	public void opciones() throws ClassNotFoundException, SQLException {
 		int messageType = JOptionPane.QUESTION_MESSAGE;
 		String[] options = { "Reiniciar", "Guardar", "Menú Principal",
 				"Cancelar" };
@@ -192,7 +212,29 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		t.start();
 		
 	}
-
+	
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+	
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
+	}
+	public void nombres()throws SQLException{
+		String j1, j2;
+		Statement stat = conn.createStatement();
+		ResultSet rs = stat.executeQuery("select * from Jugadores");
+		j1=rs.getString("Jugador1");
+		j2=rs.getString("Jugador2");
+		rs.close();
+		stat.close();
+		
+		nomJugNegras.setText(j1);
+		nomJugBlancas.setText(j2);
+		
+	}
+	
 	public void run() {
 		long tTotal;
 		Casilla cas;
@@ -261,7 +303,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		new OteloGUI();
 	}
 
