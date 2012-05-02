@@ -1,7 +1,17 @@
 package ventanas;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import java.awt.EventQueue;
+
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.*;
 import javax.swing.*;
 
@@ -157,10 +167,42 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 		this.setLocationRelativeTo(null);
 	}
 
+	private Connection conn;
+	
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
+	}
+
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
+		String nombre, pass;
 		if (pulsado == botonContinuar)// Continuar
 		{
+			nombre=jTextField1.getText();
+			pass=jPasswordField1.getText();
+			try {
+				connect();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				insertarUsuario(nombre, pass);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				disconnect();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			new registro2().setVisible(true);
 			this.dispose();
 		}
@@ -172,36 +214,21 @@ public class registroNuevo1 extends javax.swing.JFrame implements
 
 	}
 
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+	
+	public void insertarUsuario(String nom, String pass)throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("insert into Usuario values (?, ?)");
+		stat.setString(1, nom);
+		stat.setString(2, pass);
+		stat.executeUpdate();
+		stat.close();
+	}
 	public static void main(String args[]) {
 
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo1.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo1.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo1.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(registroNuevo1.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		}
-
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				new registroNuevo1().setVisible(true);
-			}
-		});
+		
+		new registroNuevo1().setVisible(true);
 	}
 
 	// Declaracion de variables
