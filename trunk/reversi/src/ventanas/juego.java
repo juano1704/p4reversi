@@ -1,7 +1,7 @@
 package ventanas;
 
-import interfaz.GUI;
-import interfaz.PanelTablero;
+import otelo.interfaz.*;
+
 
 import java.awt.EventQueue;
 import java.awt.event.*;

@@ -1,6 +1,6 @@
 package ventanas;
 
-import interfaz.GUI;
+import otelo.interfaz.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -161,7 +161,7 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 		}
 		if (pulsado == botonOk)// OK
 		{
-			new GUI();
+			new OteloGUI();
 			this.dispose();
 		}
 	}
