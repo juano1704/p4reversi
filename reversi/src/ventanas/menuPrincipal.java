@@ -2,8 +2,12 @@ package ventanas;
 
 import java.awt.EventQueue;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.logging.*;
 import javax.swing.*;
+
 
 public class menuPrincipal extends JFrame implements ActionListener {
 
@@ -86,6 +90,8 @@ public class menuPrincipal extends JFrame implements ActionListener {
 		this.setLocationRelativeTo(null);
 	}
 
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
 		if (pulsado == botonInstrucciones) {
