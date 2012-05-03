@@ -1,22 +1,29 @@
 package ventanas;
 
-import otelo.interfaz.*;
+
+import interfaz.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
-public class registro2 extends javax.swing.JFrame implements ActionListener {
+public class registro2 extends JFrame implements ActionListener {
 
 	public registro2() {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	private void initComponents() {
 
 		botonRegistrarse = new javax.swing.JButton();
@@ -156,6 +163,7 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
+		String nom, pass;
 		if (pulsado == botonRegistrarse)// Registrarse
 		{
 			new registroNuevo2().setVisible(true);
@@ -163,6 +171,38 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 		}
 		if (pulsado == botonOk)// OK
 		{
+			nom=jTextField1.getText();
+			pass=jPasswordField1.getText();
+			
+			try {
+				connect();
+			} catch (ClassNotFoundException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			} catch (SQLException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}
+			
+			
+			try {
+				comprobarUsuario(nom, pass);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			} catch (ClassNotFoundException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			try {
+				disconnect();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			
 			try {
 				new OteloGUI();
 			} catch (ClassNotFoundException e1) {
@@ -174,6 +214,55 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 			}
 			this.dispose();
 		}
+	}
+	public void comprobarUsuario(String nom, String pass)throws SQLException, ClassNotFoundException{
+
+		Statement stat = conn.createStatement();
+		ResultSet rs = stat.executeQuery("SELECT * FROM Usuario");
+		boolean encontrado=false;
+		String nom2, pass2;
+		while(rs.next()){
+			nom2=rs.getString("Nombre");
+			pass2=rs.getString("Password");			
+			if(nom2.equals(nom) && pass2.equals(pass)){
+				encontrado=true;
+				seleccionarUsuario(nom);
+				rs.close();					
+				stat.close();
+				new OteloGUI();
+				this.dispose();
+			}
+		}
+		
+		if(encontrado==false){
+			rs.close();					
+			stat.close();
+			int messageType = JOptionPane.QUESTION_MESSAGE;
+			String[] options = { "Volver a intentar" };
+			int code = JOptionPane.showOptionDialog(null, "   Nombre de usuario o contraseña incorrectos.", "ERROR",
+					0, messageType, null, options, "Volver a intentar");
+			if (code == 0)
+			{
+				this.dispose();
+				new OteloGUI();
+				
+			}
+		}
+	}
+	
+	
+	public void seleccionarUsuario(String nom)throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador2='"+nom+"'");
+		stat.executeUpdate();
+		stat.close();
+	}
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+	
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
 	}
 
 	public static void main(String args[]) {
@@ -216,4 +305,5 @@ public class registro2 extends javax.swing.JFrame implements ActionListener {
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JPasswordField jPasswordField1;
 	private javax.swing.JTextField jTextField1;
+	private Connection conn;
 }
