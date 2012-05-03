@@ -295,7 +295,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		// pone en el GUI quién ha ganado
 		if (j.getNumFichas(Juego.BLANCAS) > j.getNumFichas(Juego.NEGRAS)){
 			mensajes.setText("¡¡Las blancas ganan!!");
-			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
+			if(nomJugBlancas.getText().equals("Jugador 2")==false && nomJugNegras.getText().equals("Jugador 1")==false){
 				System.out.println("ey");
 			
 				try {
@@ -316,7 +316,12 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 					e.printStackTrace();
 				}
 				
-				
+				try {
+					mostrarPuntuaciones();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				try {
 					disconnect();
 				} catch (SQLException e) {
@@ -328,7 +333,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			
 		else if (j.getNumFichas(Juego.BLANCAS) < j.getNumFichas(Juego.NEGRAS)){
 			mensajes.setText("¡¡Las negras ganan!!");
-			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
+			if(nomJugBlancas.getText().equals("Jugador 2")==false && nomJugNegras.getText().equals("Jugador 1")==false){
 				System.out.println("ey");
 				try {
 					connect();
@@ -347,7 +352,12 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+				try {
+					mostrarPuntuaciones();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				try {
 					disconnect();
@@ -359,8 +369,8 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		}
 		else{
 			mensajes.setText("¡¡Empate!!");
-			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
-				System.out.println("ey");
+			if(nomJugBlancas.getText().equals("Jugador 2")==false && nomJugNegras.getText().equals("Jugador 1")==false){
+				
 				
 				try {
 					connect();
@@ -380,6 +390,13 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 					e.printStackTrace();
 				}
 				
+				try {
+					mostrarPuntuaciones();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 				try {
 					disconnect();
@@ -391,46 +408,79 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 		}
 
 	}
-	
+	public void mostrarPuntuaciones()throws SQLException{
+		float estad1, estad2;
+		String nom1, nom2;
+		Statement stat = conn.createStatement();
+		ResultSet rs = stat.executeQuery("SELECT * FROM Usuario where Nombre='"+nomJugBlancas.getText()+"' or Nombre='"+nomJugNegras.getText()+"'");
+		rs.next();
+		estad1=((rs.getFloat("PartidasGanadas")/rs.getFloat("PartidasJugadas"))*100);
+		nom1=rs.getString("Nombre");
+		rs.next();
+		estad2=((rs.getFloat("PartidasGanadas")/rs.getFloat("PartidasJugadas"))*100);
+		nom2=rs.getString("Nombre");
+		int messageType = JOptionPane.QUESTION_MESSAGE;
+		String[] options = { "OK" };
+		int code = JOptionPane.showOptionDialog(null, "   Nombre                 Porcentaje de victorias\n" +
+				"   "+nom1+"                  "+estad1+"\n" +
+						"   "+nom2+"                         "+estad2+"", "Final",
+				0, messageType, null, options, "OK");
+		if (code == 0)
+		{
+						
+		}
+		rs.close();
+		stat.close();
+	}
 
 	public void actualizarPuntuacionBlancas() throws SQLException{
-		
+		System.out.println("ey");
 		//Actualizar ganadas
-		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas+1 where Nombre='"+nomJugBlancas+"'");
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas+1 where Nombre='"+nomJugBlancas.getText()+"'");
 		stat.executeUpdate();
 		stat.close();
 		
 		//Actualizar jugadas
-		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas+"'");
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas.getText()+"'");
 		stat2.executeUpdate();
 		stat2.close();
+		
+		//Actualizar jugadar perdedor
+		PreparedStatement stat3 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras.getText()+"'");
+		stat3.executeUpdate();
+		stat3.close();
 		
 	}
 	
 	public void actualizarPuntuacionNegras() throws SQLException{
-		
+		System.out.println("ey");
 		//Actualizar ganadas
-		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas + 1 where Nombre='"+nomJugNegras+"'");
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas+1 where Nombre='"+nomJugNegras.getText()+"'");
 		stat.executeUpdate();
 		stat.close();
 		
 		//Actualizar jugadas
-		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras+"'");
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras.getText()+"'");
 		stat2.executeUpdate();
 		stat2.close();
+		
+		//Actualizar jugadar perdedor
+		PreparedStatement stat3 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas.getText()+"'");
+		stat3.executeUpdate();
+		stat3.close();
 	}
 	
 	public void actualizarPuntuacionEmpate() throws SQLException{
-		
+		System.out.println("ey");
 		//Actualizar jugadas blancas
-		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas+"'");
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas.getText()+"'");
 		stat.executeUpdate();
 		stat.close();		
 		
 		
 		
 		//Actualizar jugadas negras
-		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras+"'");
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras.getText()+"'");
 		stat2.executeUpdate();
 		stat2.close();
 				
