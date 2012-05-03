@@ -232,8 +232,7 @@ public class registroNuevo1 extends JFrame implements ActionListener {
 	}
 	
 	public void seleccionarUsuario(String nombre)throws SQLException{
-		PreparedStatement stat = conn.prepareStatement("insert into Jugadores values (?, 'aunno')");
-		stat.setString(1, nombre);
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='"+nombre+"' where Jugador2='jugador2'");
 		stat.executeUpdate();
 		stat.close();
 	}
