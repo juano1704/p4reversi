@@ -1,15 +1,18 @@
 package ventanas;
 
-import otelo.interfaz.*;
+
+import interfaz.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import otelo.interfaz.OteloGUI;
 
 
 public class preguntarRegistro extends javax.swing.JFrame implements
@@ -19,7 +22,6 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		jLabel1 = new javax.swing.JLabel();
@@ -101,9 +103,38 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 		{
 			new registro1().setVisible(true);
 			this.dispose();
-		} else if (pulsado == botonModoInvitado)// Modo invitado
+		}
+		
+		if (pulsado == botonModoInvitado)// Modo invitado
 		{
+			try {
+				connect();
+			} catch (ClassNotFoundException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			
+			try {
+				seleccionarUsuario1();
+				seleccionarUsuario2();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
+			
+			try {
+				disconnect();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 
+			
 			try {
 				new OteloGUI();
 			} catch (ClassNotFoundException e1) {
@@ -113,10 +144,30 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 			this.dispose();
 		}
 	}
 
+	public void seleccionarUsuario1()throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='Jugador 1'");
+		stat.executeUpdate();
+		stat.close();
+	}
+	
+	public void seleccionarUsuario2()throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador2='Jugador 2'");
+		stat.executeUpdate();
+		stat.close();
+	}
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+	
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
+	}
 	public static void main(String args[]) {
 
 		try {
@@ -157,4 +208,5 @@ public class preguntarRegistro extends javax.swing.JFrame implements
 	private javax.swing.JButton botonRegistrarse;
 	private javax.swing.JButton botonModoInvitado;
 	private javax.swing.JLabel jLabel1;
+	private Connection conn;
 }

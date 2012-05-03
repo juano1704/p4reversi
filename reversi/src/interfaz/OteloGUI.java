@@ -1,4 +1,4 @@
-package otelo.interfaz;
+package interfaz;
 
 import javax.swing.*;
 
@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -173,23 +174,16 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 	}
 	public void opciones() throws ClassNotFoundException, SQLException {
 		int messageType = JOptionPane.QUESTION_MESSAGE;
-		String[] options = { "Reiniciar", "Guardar", "Menú Principal",
-				"Cancelar" };
-		int code = JOptionPane.showOptionDialog(null, " OPCIONES", "Opciones",
+		String[] options = { "Reiniciar", "Menú Principal", "Cancelar" };
+		int code = JOptionPane.showOptionDialog(null, "Opciones", "OPCIONES",
 				0, messageType, null, options, "Cancelar");
 		if (code == 0)// Reiniciar
 		{
 			this.dispose();
 			new OteloGUI();
 		}
-		if (code == 1) {
-			// guardar
-		}
-		if (code == 3)// Cancelar
-		{
-
-		}
-		if (code == 2)// Menu Principal
+		
+		if (code == 1)// Menu Principal
 		{
 			int confirmationType = JOptionPane.QUESTION_MESSAGE;
 			String[] confirmationOptions = { "Si", "No"};
@@ -204,6 +198,12 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 				opciones();
 			}
 		}
+		
+		if (code == 2)// Cancelar
+		{
+
+		}
+		
 	}
 
 	public void jugar() {
@@ -293,16 +293,148 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			}
 		}
 		// pone en el GUI quién ha ganado
-		if (j.getNumFichas(Juego.BLANCAS) > j.getNumFichas(Juego.NEGRAS))
+		if (j.getNumFichas(Juego.BLANCAS) > j.getNumFichas(Juego.NEGRAS)){
 			mensajes.setText("¡¡Las blancas ganan!!");
-		else if (j.getNumFichas(Juego.BLANCAS) < j.getNumFichas(Juego.NEGRAS))
+			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
+				System.out.println("ey");
+			
+				try {
+					connect();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				try {
+					actualizarPuntuacionBlancas();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				try {
+					disconnect();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+			
+		else if (j.getNumFichas(Juego.BLANCAS) < j.getNumFichas(Juego.NEGRAS)){
 			mensajes.setText("¡¡Las negras ganan!!");
-		else
+			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
+				System.out.println("ey");
+				try {
+					connect();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				try {
+					actualizarPuntuacionNegras();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				try {
+					disconnect();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		else{
 			mensajes.setText("¡¡Empate!!");
+			if(nomJugBlancas.equals("Jugador 2")==false && nomJugNegras.equals("Jugador 1")==false){
+				System.out.println("ey");
+				
+				try {
+					connect();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				try {
+					actualizarPuntuacionEmpate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				try {
+					disconnect();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 
 	}
 	
 
+	public void actualizarPuntuacionBlancas() throws SQLException{
+		
+		//Actualizar ganadas
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas+1 where Nombre='"+nomJugBlancas+"'");
+		stat.executeUpdate();
+		stat.close();
+		
+		//Actualizar jugadas
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas+"'");
+		stat2.executeUpdate();
+		stat2.close();
+		
+	}
+	
+	public void actualizarPuntuacionNegras() throws SQLException{
+		
+		//Actualizar ganadas
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasGanadas=PartidasGanadas + 1 where Nombre='"+nomJugNegras+"'");
+		stat.executeUpdate();
+		stat.close();
+		
+		//Actualizar jugadas
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras+"'");
+		stat2.executeUpdate();
+		stat2.close();
+	}
+	
+	public void actualizarPuntuacionEmpate() throws SQLException{
+		
+		//Actualizar jugadas blancas
+		PreparedStatement stat = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugBlancas+"'");
+		stat.executeUpdate();
+		stat.close();		
+		
+		
+		
+		//Actualizar jugadas negras
+		PreparedStatement stat2 = conn.prepareStatement("update Usuario set PartidasJugadas=PartidasJugadas+1 where Nombre='"+nomJugNegras+"'");
+		stat2.executeUpdate();
+		stat2.close();
+				
+	}
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		new OteloGUI();
 	}
@@ -333,8 +465,7 @@ public class OteloGUI extends JFrame implements Runnable, ActionListener {
 			miPausa.setEnabled(true);
 			jugar();
 			botonEmpezar.setVisible(false);
-			botonOpciones.setVisible(true);
-			
+			botonOpciones.setVisible(true);			
 		}
 
 

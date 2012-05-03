@@ -13,13 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class registro1 extends javax.swing.JFrame implements ActionListener {
+public class registro1 extends JFrame implements ActionListener {
 
 	public registro1() {
 		initComponents();
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	private void initComponents() {
 
 		botonRegistrarse = new javax.swing.JButton();
@@ -169,25 +169,24 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 		{
 			nom=jTextField1.getText();
 			pass=jPasswordField1.getText();
+			
 			try {
 				connect();
 			} catch (ClassNotFoundException e2) {
-				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			} catch (SQLException e2) {
-				// TODO Auto-generated catch block
 				e2.printStackTrace();
 			}
+			
 			try {
 				comprobarUsuario(nom, pass);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 			try {
 				disconnect();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -196,37 +195,38 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 	public void comprobarUsuario(String nom, String pass)throws SQLException{
 
 		Statement stat = conn.createStatement();
-		ResultSet rs = stat.executeQuery("Select nombre, password from Usuario");
+		ResultSet rs = stat.executeQuery("SELECT * FROM Usuario");
 		boolean encontrado=false;
-		rs.next();
-		do{			
-			if(rs.getString("Nombre")==nom){
-				if( rs.getString("Password")==pass){
-					encontrado=true;
-					seleccionarUsuario(nom);
-					rs.close();					
-					stat.close();
-					new registro2().setVisible(true);
-					this.dispose();
-				}				
+		String nom2, pass2;
+		while(rs.next()){
+			nom2=rs.getString("Nombre");
+			pass2=rs.getString("Password");			
+			if(nom2.equals(nom) && pass2.equals(pass)){
+				encontrado=true;
+				seleccionarUsuario(nom);
+				rs.close();					
+				stat.close();
+				new registro2().setVisible(true);
+				this.dispose();
 			}
-			else{
-				int messageType = JOptionPane.QUESTION_MESSAGE;
-				String[] options = { "Volver a intentar" };
-				int code = JOptionPane.showOptionDialog(null, "   Nombre de usuario o contraseña incorrectos.", "ERROR",
-						0, messageType, null, options, "Volver a intentar");
-				if (code == 0)// Reiniciar
-				{
-					this.dispose();
-					new registro1().setVisible(true);
-					
-				}
+		}
+		
+		if(encontrado==false){
+			rs.close();					
+			stat.close();
+			int messageType = JOptionPane.QUESTION_MESSAGE;
+			String[] options = { "Volver a intentar" };
+			int code = JOptionPane.showOptionDialog(null, "   Nombre de usuario o contraseña incorrectos.", "ERROR",
+					0, messageType, null, options, "Volver a intentar");
+			if (code == 0)
+			{
+				this.dispose();
+				new registro1().setVisible(true);
+				
 			}
-		}while(encontrado==false && rs.next());
-			
-		rs.close();
-		stat.close();
+		}
 	}
+	
 	
 	public void seleccionarUsuario(String nom)throws SQLException{
 		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='"+nom+"'");

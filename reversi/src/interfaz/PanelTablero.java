@@ -1,13 +1,10 @@
 package interfaz;
 
 import javax.swing.*;
-
-import clasesBasicas.*;
-
 import java.awt.*;
 import java.awt.event.*;
-
-import jugadores.*;
+import otelo.*;
+import otelo.jugadores.*;
 
 /**
  * Representa en pantalla el tablero donde se juega la partida. Es la clase
