@@ -208,7 +208,8 @@ public class registroNuevo1 extends JFrame implements ActionListener {
 			else{
 				int messageType = JOptionPane.QUESTION_MESSAGE;
 				String[] options = { "Volver a intentar" };
-				int code = JOptionPane.showOptionDialog(null, " ERROR", "Nombre de usuario o contraseña incorrectos",
+				int code = JOptionPane.showOptionDialog(null, "   Nombre de usuario o contraseña incorrectos.\n" +
+						"La contraseña debe tener al menos 4 caracteres", "ERROR",
 						0, messageType, null, options, "Volver a intentar");
 				if (code == 0)// Reiniciar
 				{
@@ -231,8 +232,8 @@ public class registroNuevo1 extends JFrame implements ActionListener {
 		conn.close();
 	}
 	
-	public void seleccionarUsuario(String nombre)throws SQLException{
-		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='"+nombre+"' where Jugador2='jugador2'");
+	public void seleccionarUsuario(String nom)throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='"+nom+"'");
 		stat.executeUpdate();
 		stat.close();
 	}
