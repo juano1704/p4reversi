@@ -2,8 +2,16 @@ package ventanas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class registro1 extends javax.swing.JFrame implements ActionListener {
 
@@ -151,6 +159,7 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		JButton pulsado = (JButton) e.getSource();
+		String nom, pass;
 		if (pulsado == botonRegistrarse)// Registrarse
 		{
 			new registroNuevo1().setVisible(true);
@@ -158,41 +167,84 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 		}
 		if (pulsado == botonOk)// OK
 		{
-			new registro2().setVisible(true);
-			this.dispose();
+			nom=jTextField1.getText();
+			pass=jPasswordField1.getText();
+			try {
+				connect();
+			} catch (ClassNotFoundException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			try {
+				comprobarUsuario(nom, pass);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				disconnect();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
+	}
+	
+	public void comprobarUsuario(String nom, String pass)throws SQLException{
+
+		Statement stat = conn.createStatement();
+		ResultSet rs = stat.executeQuery("Select nombre, password from Usuario");
+		boolean encontrado=false;
+		rs.next();
+		do{			
+			if(rs.getString("Nombre")==nom){
+				if( rs.getString("Password")==pass){
+					encontrado=true;
+					seleccionarUsuario(nom);
+					rs.close();					
+					stat.close();
+					new registro2().setVisible(true);
+					this.dispose();
+				}				
+			}
+			else{
+				int messageType = JOptionPane.QUESTION_MESSAGE;
+				String[] options = { "Volver a intentar" };
+				int code = JOptionPane.showOptionDialog(null, "   Nombre de usuario o contraseña incorrectos.", "ERROR",
+						0, messageType, null, options, "Volver a intentar");
+				if (code == 0)// Reiniciar
+				{
+					this.dispose();
+					new registro1().setVisible(true);
+					
+				}
+			}
+		}while(encontrado==false && rs.next());
+			
+		rs.close();
+		stat.close();
+	}
+	
+	public void seleccionarUsuario(String nom)throws SQLException{
+		PreparedStatement stat = conn.prepareStatement("update Jugadores set Jugador1='"+nom+"'");
+		stat.executeUpdate();
+		stat.close();
+	}
+	public void disconnect() throws SQLException {
+		conn.close();
+	}
+	
+	public void connect() throws ClassNotFoundException, SQLException {
+		Class.forName("org.sqlite.JDBC");
+		conn = DriverManager.getConnection("jdbc:sqlite:db/reversiDB.sqlite");
 	}
 
 	public static void main(String args[]) {
 
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(registro1.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(registro1.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(registro1.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(registro1.class.getName()).log(
-					java.util.logging.Level.SEVERE, null, ex);
-		}
-
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-				new registro1().setVisible(true);
-			}
-		});
+		new registro1().setVisible(true);
 	}
 
 	// Declaracion de variables
@@ -203,4 +255,5 @@ public class registro1 extends javax.swing.JFrame implements ActionListener {
 	private javax.swing.JLabel jLabel3;
 	private javax.swing.JPasswordField jPasswordField1;
 	private javax.swing.JTextField jTextField1;
+	private Connection conn;
 }
